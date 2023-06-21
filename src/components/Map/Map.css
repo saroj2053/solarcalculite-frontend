@@ -1,0 +1,9 @@
+.map {
+  height: 600px;
+  z-index: 0;
+}
+
+.product__controls {
+  display: flex;
+  gap: 1rem;
+}

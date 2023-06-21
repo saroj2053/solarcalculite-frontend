@@ -1,0 +1,39 @@
+.projects__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px;
+}
+
+.projectsWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.projects {
+  width: 60%;
+}
+
+.project {
+  display: flex;
+  gap: 40px;
+  background-color: #fff;
+  color: black;
+  border: 1px solid lightgray;
+  padding: 20px;
+  margin: 20px 5px;
+}
+
+.project__text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project__image {
+  width: 50%; 
+}
+

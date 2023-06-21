@@ -1,0 +1,95 @@
+.profile {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+  
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.edit {
+  border: 1px solid #87ceeb;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: black;
+  font-weight: bold;
+  background-color: transparent;
+  transition: all 400ms ease-in-out;
+}
+.edit:hover {
+  background: #87ceeb;
+  color: #fff;
+  border: 1px solid #87ceeb;
+}
+.updatePassword {
+  border: 1px solid #ff8800;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: black;
+  font-weight: bold;
+}
+.updatePassword:hover {
+  background: #ff8800;
+  color: #fff;
+  border: 1px solid lightgray;
+}
+
+.delete {
+  border: 1px solid #cc0000;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: black;
+  font-weight: bold;
+  background-color: transparent;
+  transition: all 400ms ease-in-out;
+}
+
+.delete:hover {
+  background: #cc0000;
+  color: #fff;
+  border: 1px solid #cc0000;
+}
+
+
+
+.textWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  
+}
+
+.textWrapper .icon {
+  font-size: 20px;
+  border: 1px solid lightgray;
+  
+  padding: 10px;
+  border-radius: 50%;
+}
+
+
+@media (max-width: 770px) {
+  .controls {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+}

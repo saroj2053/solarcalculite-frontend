@@ -1,0 +1,44 @@
+.projectDetails {
+  padding: 50px;
+}
+.project__ownedBy {
+  font-size: 0.95rem;
+  color: lightgray;
+}
+.project__title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem; 
+}
+
+.project__desc {
+  font-size: 1rem;
+  color: gray;
+  line-height: 1.5rem;
+}
+
+.carouselImg {
+  padding-top: 50px;
+}
+.controls {
+  padding-bottom: 40px;
+}
+
+.generateData {
+  border: 1px solid green;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 5 20px;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+.generateData:hover {
+  color: white;
+  background-color: green;
+}
+
+.btnDark {
+  color: white;
+}

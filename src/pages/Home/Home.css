@@ -1,0 +1,70 @@
+.header {
+  font-size: 26px;
+  padding-top: 30px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
+
+.articles {
+  width: 91.5%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  border: 2px solid lightgray;
+  margin: 30px 15px;
+  cursor: pointer;
+  width: 28%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+.card__dark h3 {
+  color: black;
+}
+
+.card:hover {
+  transform: translateY(-0.3rem);
+  border: 2px solid #2596be;
+  color: black;
+  
+}
+
+.card img {
+  width: 90%;
+  object-fit: contain;
+}
+
+.card h3 {
+  text-align: left;
+  background-color: transparent;
+  color: gray;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.card h3:hover {
+  color: black;
+}
+
+.weather__data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+}
+

@@ -1,0 +1,137 @@
+.navbar__nav {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.bg-light {
+  background-color:#fad6a3 !important;
+}
+
+
+.navbar__brand {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar-brand .navbar-brand__text {
+  font-size: 1.6rem;
+  font-weight: 600
+}
+
+.nav-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* .navbar-light .navbar-nav .nav-link {
+  color: #fff;
+} */
+
+.navbar-light .navbar-nav .hover__links:hover {
+  color: #222
+}
+.navbar-dark .navbar-nav .hover__links.active {
+  color: #222;
+}
+
+.navbar-dark .navbar-nav .hover__links.active::after {
+  display: block;
+  content: "";
+  border-bottom: 2px solid #2596be;
+}
+
+
+
+.signInButton {
+  outline: none;
+  border-radius: 20px;
+  padding: 5px 20px !important;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #111 !important;
+  background-color: #fff;
+  border: 1px solid #000;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.signInButton:hover {
+  background-color: rgb(100, 99, 99);
+  color: #f3f3f3 !important;
+}
+
+.signUpButton {
+  outline: none;
+  border: 1px solid #2596be;
+  border-radius: 20px;
+  padding: 5px 20px !important;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #111 !important;
+  background-color: #fff;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.signUpButton:hover {
+  background-color: #2596be;
+  color: #fff !important;
+}
+
+.signOutButton {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 5px 20px !important;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  background: #ea3943;
+}
+
+.signOutButton:hover {
+  background-color: #e01822;
+  color: white !important;
+}
+
+.lightSeparator {
+  /* height: 1px;
+  background: linear-gradient(to right, transparent, #9ba3c2, transparent); */
+
+  border-bottom: 1px solid lightgray;
+}
+.darkSeparator {
+  /* height: 1px;
+  background: linear-gradient(to right, transparent, #141415, transparent); */
+
+  border-bottom: 2px solid lightgray;
+}
+
+.darkModeIcon {
+  vertical-align: baseline;
+}
