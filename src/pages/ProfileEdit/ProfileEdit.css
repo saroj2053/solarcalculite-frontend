@@ -32,3 +32,157 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.submitBtn {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ################### media queries ################### */
+
+/* @media screen and (max-width: 640px) { }
+@media screen and (min-width: 641px) and (max-width: 1007px) { }
+@media screen and (min-width: 1008px) { } */
+
+
+@media screen and (max-width: 640px) {
+  .profileUpdate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .profileUpdateHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+  
+  .profileUpdateForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  
+  .form-group > img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-group > label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input {
+    font-size: 0.85rem;
+  }
+  
+  .submitBtn {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+ }
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  .profileUpdate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .profileUpdateHeader {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+  
+  .profileUpdateForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  
+  .form-group > img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-group > label {
+    font-size: 1rem;
+  }
+
+  .form-group input {
+    font-size: 1rem;
+  }
+  
+  .submitBtn {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+@media screen and (min-width: 1008px) { 
+  .profileUpdate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .profileUpdateHeader {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+  
+  .profileUpdateForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  
+  .form-group > img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-group > label {
+    font-size: 1.125rem;
+  }
+
+  .form-group input {
+    font-size: 1.125rem;
+  }
+  
+  .submitBtn {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}

@@ -1,5 +1,6 @@
-.map {
-  height: 600px;
+.map
+ {
+  height: 600px !important;
   z-index: 0;
 }
 
@@ -7,3 +8,25 @@
   display: flex;
   gap: 1rem;
 }
+
+
+.button-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.button-text {
+  margin-left: 5px; 
+}
+
+  .icon__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .react__icon {
+
+      vertical-align: middle;
+   
+  }

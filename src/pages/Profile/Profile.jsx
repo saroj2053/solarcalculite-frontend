@@ -8,16 +8,15 @@ import Loader from "../../components/Loader/Loader";
 
 import { SiNamecheap, SiNamebase } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
-// import { useTheme } from "../../context/ThemeContext";
+import { TiUserDelete } from "react-icons/ti";
+import { FaUserEdit } from "react-icons/fa";
+
 import avatar from "../../images/6596121.png";
 
 function Profile() {
   const [auth, setAuth] = useAuth();
   const [userDetails, setUserDetails] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  // const darkTheme = useTheme();
-  // const btnColor = darkTheme ? "btnDark" : "btnLight";
 
   const navigate = useNavigate();
 
@@ -45,7 +44,6 @@ function Profile() {
       navigate("/signin");
     }
   };
-  // need to be called from the backend
 
   return (
     <>
@@ -54,68 +52,63 @@ function Profile() {
       ) : (
         <div className="profile">
           <div className="profile__details">
-            <h1 className="display-4">Profile Page</h1>
-            <img
-              style={{
-                borderRadius: "50%",
-                width: "100px",
-                height: "100px",
-                objectFit: "cover",
-              }}
-              className="img-thumbnail mb-3"
-              src={avatar}
-              alt="user"
-            />
-            <div className="textWrapper mb-3">
+            <h1 className="profile__header">My Profile</h1>
+            <img className="mb-5 profile__icon" src={avatar} alt="user" />
+            <div className="textWrapper mb-5">
               <div className="icon">
                 <SiNamecheap />
               </div>
               <div className="detailUser">
-                <span className="profile__name">Name</span>
-                <p>{userDetails.name}</p>
+                <span className="profile__email">
+                  <strong>{userDetails.name}</strong>
+                </span>
               </div>
             </div>
-            <div className="textWrapper mb-3">
+            <div className="textWrapper mb-5">
               <div className="icon">
                 <SiNamebase />
               </div>
               <div className="detailUser">
-                <span className="profile__username">Username</span>
-                <p>{userDetails.username}</p>
+                <span className="profile__email">
+                  <strong>{userDetails.username}</strong>
+                </span>
               </div>
             </div>
-            <div className="textWrapper mb-3">
+            <div className="textWrapper mb-5">
               <div className="icon">
                 <MdEmail />
               </div>
               <div className="detailUser">
-                <span className="profile__email">Email</span>
-                <p>{userDetails.email}</p>
+                <span className="profile__email">
+                  <strong>{userDetails.email}</strong>
+                </span>
               </div>
             </div>
-          </div>
+            <div className="profile__controls">
+              <button
+                className="btn btn-warning btn-sm"
+                onClick={() => navigate("/profile/edit")}
+              >
+                <div className="button-content">
+                  <span className="button-text"> Update Profile</span>
+                  <span className="icon__wrapper">
+                    <FaUserEdit className="react__icon" />
+                  </span>
+                </div>
+              </button>
 
-          <div className="controls">
-            <button
-              // className={`edit ${btnColor}`}
-              className="btn btn-warning btn-sm"
-              onClick={() => navigate("/profile/edit")}
-            >
-              Update Profile
-            </button>
-            {/* <button
-              className="updatePassword"
-              onClick={() => navigate("/updatePassword")}
-            >
-              Update Password
-            </button> */}
-            <button
-              // className={`delete ${btnColor}`}
-              className="btn btn-danger btn-sm"
-              onClick={handleDeleteUser}
-            >
-              Deactivate this account
-            </button>
+              <button
+                className="btn btn-danger btn-sm"
+                onClick={handleDeleteUser}
+              >
+                <div className="button-content">
+                  <span className="button-text"> Delete Account</span>
+                  <span className="icon__wrapper">
+                    <TiUserDelete className="react__icon" />
+                  </span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 .signUp {
-  min-height: 90.4vh;
+  min-height: 81vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,15 +26,160 @@
     background-color: #f3f3f3;
     font-size: 14px;
   }
+
+  .registerBtn {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
   
   .signInBtn {
     border: none;
     outline: none;
     background-color: transparent;
-    color: green;
+    color: #c5770a;
     font-weight: bold;
   }
 
   .signInBtn:hover {
     text-decoration: underline;
   }
+
+
+    /* ################### media queries ################### */
+
+ @media screen and (max-width: 640px) {
+  
+  .signUpHeader {
+    font-size: 1.25rem;
+    font-weight: bold;
+    width: inherit;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .signUpForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .form-group > input {
+      border: none;
+      padding: 25px 20px;
+      background-color: #f3f3f3;
+      font-size: 0.875rem;
+    }
+  
+    .registerBtn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    .signInBtn {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 0.875rem;
+      color: #c5770a;
+      font-weight: bold;
+    }
+
+    .cta__register__login {
+      font-size: 0.875rem;
+    }
+  
+    .signInBtn:hover {
+      text-decoration: underline;
+    }
+ }
+@media screen and (min-width: 641px) and (max-width: 991px) {
+  .signUpHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: inherit;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .signUpForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .form-group > input {
+      border: none;
+      padding: 25px 20px;
+      background-color: #f3f3f3;
+      font-size: 0.875rem;
+    }
+  
+    .registerBtn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    .signInBtn {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 1rem;
+      color: #c5770a;
+      font-weight: bold;
+    }
+
+    .cta__register__login {
+      font-size: 1rem;
+    }
+  
+    .signInBtn:hover {
+      text-decoration: underline;
+    }
+  
+  
+ }
+@media screen and (min-width: 992px) { 
+  .signUpHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: inherit;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .signUpForm {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .form-group > input {
+      border: none;
+      padding: 25px 20px;
+      background-color: #f3f3f3;
+      font-size: 0.875rem;
+    }
+  
+    .registerBtn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    .signInBtn {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 1rem;
+      color: #c5770a;
+      font-weight: bold;
+    }
+
+    .cta__register__login {
+      font-size: 1rem;
+    }
+  
+    .signInBtn:hover {
+      text-decoration: underline;
+    }
+  
+} 

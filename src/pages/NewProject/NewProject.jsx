@@ -4,6 +4,7 @@ import { createProject } from "../../api/projectApi";
 import { useNavigate } from "react-router-dom";
 import { getTemplates } from "../../api/templateApi";
 import { ToastContainer, toast } from "react-toastify";
+import { BsDatabaseFillAdd } from "react-icons/bs";
 
 function NewProject() {
   const navigate = useNavigate();
@@ -51,10 +52,7 @@ function NewProject() {
     formData.append("description", description);
     formData.append("product", JSON.stringify(selectedTemplate));
 
-    console.log(formData);
-
     const response = await createProject(formData);
-    console.log(response);
 
     if (response.status === 201) {
       navigate("/projects");
@@ -68,11 +66,11 @@ function NewProject() {
   return (
     <>
       <div className="newProjectWrapper">
-        <h1 className="text-center">New Project</h1>
+        <h1 className="text-center">Add Project</h1>
         <ToastContainer theme="dark" />
         <form encType="multipart/form-data">
           <div className="mb-3 ">
-            <label className="form-label" htmlFor="title">
+            <label className="form-label newProject__label" htmlFor="title">
               Title
             </label>
             <input
@@ -87,7 +85,10 @@ function NewProject() {
           </div>
 
           <div className="mb-3">
-            <label className="form-label" htmlFor="description">
+            <label
+              className="form-label newProject__label"
+              htmlFor="description"
+            >
               Description
             </label>
             <textarea
@@ -111,7 +112,10 @@ function NewProject() {
                 multiple
               />
               {selectedFiles.length === 0 ? (
-                <label className="form-file-label" htmlFor="image">
+                <label
+                  className="form-file-label newProject__label"
+                  htmlFor="image"
+                >
                   <span className="form-file-text custom-file-label">
                     Select images
                   </span>
@@ -123,19 +127,38 @@ function NewProject() {
             </div>
           </div>
           <div className="mb-3">
-            <p className="lead">Choose among the existing three products</p>
+            <p className="selection__text">
+              Choose among the existing four products
+            </p>
             <div className="form-group">
-              <p>
-                You have selected:{" "}
-                <span style={{ color: "green" }}>
-                  {" "}
-                  {selectedTemplate.productName}
-                </span>
+              <p className="selectedPredefinedProduct">
+                {Object.keys(selectedTemplate).length === 0 ? (
+                  <span
+                    style={{ color: "red" }}
+                    className="form-text text-muted"
+                  >
+                    You haven't selected any product
+                  </span>
+                ) : (
+                  <>
+                    You have selected:{" "}
+                    <span
+                      style={{
+                        color: "white",
+                        backgroundColor: "green",
+                        borderRadius: "10px",
+                        padding: "2px 10px",
+                      }}
+                    >
+                      {selectedTemplate.productName}
+                    </span>
+                  </>
+                )}
               </p>
             </div>
             <div className="btn-group dropright">
               <button
-                className="btn dropdown-toggle"
+                className="btn btn-outline-secondary btn-sm dropdown-toggle productSelectionBtn"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
@@ -147,7 +170,7 @@ function NewProject() {
                 {templates.map(template => (
                   <div key={template._id}>
                     <li
-                      className="dropdown-item"
+                      className="dropdown-item selectProductList"
                       onClick={() => setSelectedTemplate(template)}
                     >
                       {template.productName}
@@ -164,7 +187,14 @@ function NewProject() {
               onClick={handleFileUpload}
               disabled={isUploading}
             >
-              {isUploading ? "Adding Project..." : "Add Project"}
+              <div className="buttonContent">
+                <span className="iconWrap">
+                  <BsDatabaseFillAdd className="bsDbFill" />
+                </span>
+                <span className="saving-text">
+                  {isUploading ? "Saving..." : "Save"}
+                </span>
+              </div>
             </button>
           </div>
         </form>

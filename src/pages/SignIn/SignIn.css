@@ -1,23 +1,13 @@
 .signIn {
-  min-height: 90.4vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.signInLogo {
-  width: 80px;
-   height: 80px;
-   object-fit: cover;
-   position: relative;
-   top: 50%px;
-   left: 50%;
-   transform: translate(-50%, -50%);
-}
-
 
 .signInHeader {
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: bold;
   width: inherit;
   text-align: center;
@@ -39,11 +29,10 @@
     font-size: 14px;
   }
   
-  
-  .errorMessage {
-    color: #da1b55;
-    text-align: left;
-    width: 100%;
+
+  .loginBtn {
+    text-transform: uppercase;
+    font-weight: 500;
   }
 
   .signUpBtn {
@@ -51,16 +40,122 @@
     outline: none;
     font-weight:bold;
     background: transparent;
-    color: green;
+    color: #c5770a;
   }
 
   .signUpBtn:hover {
     text-decoration: underline;
   }
 
-  /*  toast */
 
-  .toast__container {
-    background: red;
-    color: white;
+  /* ################### media queries ################### */
+
+ @media screen and (max-width: 640px) {
+  .signIn {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
+ 
+  .signInHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: inherit;
+    text-align: center;
+  
+  }
+  
+  .signInForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  
+  .form-group > input {
+      border: none;
+      padding: 15px 10px;
+      background-color: #f3f3f3;
+      font-size: 0.875rem;
+    }
+    
+  
+    .loginBtn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  
+ }
+@media screen and (min-width: 641px) and (max-width: 991px) {
+  .signIn {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+ 
+  .signInHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: inherit;
+    text-align: center;
+  
+  }
+  
+  .signInForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  
+  .form-group > input {
+      border: none;
+      padding: 15px 10px;
+      background-color: #f3f3f3;
+      font-size: 0.875rem;
+    }
+    
+  
+    .loginBtn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  
+  
+ }
+@media screen and (min-width: 992px) { 
+  .signIn {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+ 
+  .signInHeader {
+    font-size: 2rem;
+    font-weight: bold;
+    width: inherit;
+    text-align: center;
+  
+  }
+  
+  .signInForm {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .form-group > input {
+      border: none;
+      padding: 15px 10px;
+      background-color: #f3f3f3;
+      font-size: 0.875rem;
+    }
+    
+    .loginBtn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+} 

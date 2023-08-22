@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import { createProduct } from "../../api/productApi";
 
-function AddProductModal({ handleCloseModal, project }) {
+function AddProductModal({ handleCloseModal, project, latitude, longitude }) {
   const [productName, setProductName] = useState("");
-  const [peekPower, setPeekPower] = useState("");
+  const [peakPower, setPeakPower] = useState("");
   const [area, setArea] = useState("");
   const [orientation, setOrientation] = useState("");
   const [tilt, setTilt] = useState("");
-  const [lon, setLon] = useState("");
-  const [lat, setLat] = useState("");
 
   const data = {
     productName,
-    peekPower,
+    peakPower,
     area,
     orientation,
     tilt,
-    lon,
-    lat,
+    lat: latitude,
+    lon: longitude,
     projectId: project._id,
   };
 
@@ -75,17 +73,19 @@ function AddProductModal({ handleCloseModal, project }) {
                   id="name"
                   placeholder="Enter product name"
                   onChange={evt => setProductName(evt.target.value)}
+                  required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="name">Peek Power</label>
+                <label htmlFor="name">Peak Power</label>
                 <input
                   type="number"
-                  value={peekPower}
+                  value={peakPower}
                   className="form-control"
                   placeholder="Product's peak power here"
                   min={1}
-                  onChange={evt => setPeekPower(evt.target.value)}
+                  onChange={evt => setPeakPower(evt.target.value)}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -97,6 +97,7 @@ function AddProductModal({ handleCloseModal, project }) {
                   placeholder="Enter area in (sq. m.)"
                   min={0}
                   onChange={evt => setArea(evt.target.value)}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -106,9 +107,10 @@ function AddProductModal({ handleCloseModal, project }) {
                   className="form-control"
                   value={orientation}
                   onChange={evt => setOrientation(evt.target.value)}
+                  required
                 >
                   <option defaultValue value="">
-                    Please choose orientation
+                    Choose orientation
                   </option>
                   <option value="N">N</option>
                   <option value="S">S</option>
@@ -125,7 +127,7 @@ function AddProductModal({ handleCloseModal, project }) {
                   onChange={evt => setTilt(evt.target.value)}
                 >
                   <option defaultValue value="">
-                    Please select angle of inclination
+                    Select angle of inclination
                   </option>
                   <option value="0">0&deg;</option>
                   <option value="10">10&deg;</option>
@@ -140,29 +142,28 @@ function AddProductModal({ handleCloseModal, project }) {
                 </select>
               </div>
               <div className="form-group">
-                <label htmlFor="lon">Longitude</label>
-                <input
-                  type="text"
-                  value={lon}
-                  id="lon"
-                  className="form-control"
-                  onChange={evt => setLon(evt.target.value)}
-                />
-              </div>
-              <div className="form-group">
                 <label htmlFor="lat">Latitude</label>
                 <input
                   type="text"
-                  value={lat}
+                  value={latitude}
                   id="lat"
                   className="form-control"
-                  onChange={evt => setLat(evt.target.value)}
+                  disabled
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lon">Longitude</label>
+                <input
+                  type="text"
+                  value={longitude}
+                  id="lon"
+                  className="form-control"
+                  disabled
                 />
               </div>
               <small id="infoHelp" className="form-text text-muted">
                 This will be added to {project.title}
               </small>
-              <p></p>
             </div>
             <div className="modal-footer">
               <button

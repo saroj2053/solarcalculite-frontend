@@ -31,58 +31,66 @@ function ProfileEdit() {
   };
 
   return (
-    <div className="profileUpdate">
-      <div className="profileUpdateHeader"> Update Profile </div>
-      <ToastContainer theme="dark" />
-      <form
-        action=""
-        className="profileUpdateForm"
-        onSubmit={handleProfileUpdate}
+    <>
+      <button
+        className="btn btn-secondary btn-sm mt-3"
+        onClick={() => navigate("/profile")}
       >
-        <div className="form-group">
-          <img className="img-thumbnail" src={avatar} alt="user icon" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={evt => setName(evt.target.value)}
-            className="form-control"
-            id="name"
-            name="name"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={evt => setUsername(evt.target.value)}
-            className="form-control"
-            id="username"
-            name="username"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={evt => setEmail(evt.target.value)}
-            className="form-control"
-            id="email"
-            name="email"
-          />
-        </div>
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={handleProfileUpdate}
+        Go Back
+      </button>
+      <div className="profileUpdate">
+        <div className="profileUpdateHeader"> Update Profile </div>
+        <ToastContainer theme="dark" />
+        <form
+          action=""
+          className="profileUpdateForm"
+          onSubmit={handleProfileUpdate}
         >
-          UPDATE PROFILE
-        </button>
-      </form>
-    </div>
+          <div className="form-group">
+            <img src={avatar} alt="user icon" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={evt => setName(evt.target.value)}
+              className="form-control"
+              id="name"
+              name="name"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={evt => setUsername(evt.target.value)}
+              className="form-control"
+              id="username"
+              name="username"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={evt => setEmail(evt.target.value)}
+              className="form-control"
+              id="email"
+              name="email"
+            />
+          </div>
+          <button
+            className="btn btn-primary btn-sm submitBtn"
+            onClick={handleProfileUpdate}
+          >
+            Update Profile
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 

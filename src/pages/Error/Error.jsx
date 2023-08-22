@@ -5,8 +5,8 @@ function Error() {
   return (
     <div className="errorPage">
       <h1 className="errorTitle">404</h1>
-      <h2 className="errorDesc">WE ARE SORRY, PAGE NOT FOUND!</h2>
-      <p>
+      <h2 className="errorSubTitle">WE ARE SORRY, PAGE NOT FOUND!</h2>
+      <p className="errorDesc">
         The page you are looking for might have been removed had its name
         changed or is temporarily unavailable.
       </p>

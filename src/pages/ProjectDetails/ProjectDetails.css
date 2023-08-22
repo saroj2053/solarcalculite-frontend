@@ -1,5 +1,6 @@
 .projectDetails {
-  padding: 50px;
+  padding: 50px 0;
+  
 }
 .project__ownedBy {
   font-size: 0.95rem;
@@ -13,32 +14,171 @@
 }
 
 .project__desc {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: gray;
   line-height: 1.5rem;
 }
 
-.carouselImg {
-  padding-top: 50px;
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10%;
+}
+.text__info {
+  width: 60%;
+}
+
+.carousel {
+  width: 30%;
 }
 .controls {
+  display: flex;
+  gap: 20px;
   padding-bottom: 40px;
 }
 
-.generateData {
-  border: 1px solid green;
-  font-weight: bold;
-  font-size: 0.8rem;
-  padding: 5 20px;
-  border-radius: 20px;
-  background-color: transparent;
+.button-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
-.generateData:hover {
-  color: white;
-  background-color: green;
+.button-text {
+  margin-right: 5px; 
 }
 
-.btnDark {
-  color: white;
+  .icon__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .react__icon {
+
+      vertical-align: middle;
+   
+  }
+
+
+@media (max-width: 770px) {
+  .controls {
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-bottom: 40px;
+    }
+  }
 }
+
+
+
+
+/* ################### media queries ################### */
+
+@media screen and (max-width: 640px) { 
+ 
+  .project__ownedBy {
+    font-size: 0.75rem;
+    color: lightgray;
+  }
+  .project__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem; 
+  }
+
+  .project__desc {
+    font-size: 0.85rem;
+    color: gray;
+    line-height: 1.2rem;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+  }
+
+  .text__info {
+    width: 100%;
+  }
+
+  .carousel {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 766px) {
+  .project__ownedBy {
+    font-size: 0.85rem;
+    color: lightgray;
+  }
+  .project__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem; 
+  }
+
+  .project__desc {
+    font-size: 0.85rem;
+    color: gray;
+    line-height: 1.2rem;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+  }
+
+  .text__info {
+    width: 100%;
+  }
+
+  .carousel {
+    width: 100%;
+  }
+ }
+
+
+ @media screen and (min-width: 767px) and (max-width: 1007px) {
+  .project__ownedBy {
+    font-size: 0.85rem;
+    color: lightgray;
+  }
+  .project__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem; 
+  }
+
+  .project__desc {
+    font-size: 0.85rem;
+    color: gray;
+    line-height: 1.2rem;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+  }
+
+  .text__info {
+    width: 100%;
+  }
+
+  .carousel {
+    width: 60%;
+  }
+ }
+
+
+@media screen and (min-width: 1008px) {
+  
+ } 

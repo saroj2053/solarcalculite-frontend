@@ -15,7 +15,7 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [auth, setAuth] = useAuth();
 
-  const handleSubmit = async evt => {
+  const handleRegister = async evt => {
     evt.preventDefault();
 
     const data = {
@@ -35,7 +35,7 @@ function SignUp() {
       });
       localStorage.setItem("auth", JSON.stringify(response.data));
 
-      navigate("/");
+      navigate("/projects");
     } else if (response.code === "ERR_BAD_REQUEST") {
       toast.error(response.response.data.message);
     }
@@ -43,7 +43,7 @@ function SignUp() {
 
   return (
     <div className="signUp">
-      <div className="signUpHeader">Create an account 🙏 </div>
+      <div className="signUpHeader">Register</div>
 
       <ToastContainer theme="dark" />
       <form className="signUpForm">
@@ -100,26 +100,20 @@ function SignUp() {
 
         <button
           type="submit"
-          onClick={handleSubmit}
-          className="btn btn-primary btn-sm"
+          onClick={handleRegister}
+          className="btn btn-primary btn-sm registerBtn"
         >
-          Submit
+          Register
         </button>
+        <div className="mt-3">
+          <span className="cta__register__login">
+            <strong>Already have an account ? </strong>{" "}
+            <button className="signInBtn" onClick={() => navigate("/signin")}>
+              Sign In
+            </button>
+          </span>
+        </div>
       </form>
-      <span
-        style={{
-          display: "block",
-          width: "50%",
-          margin: "0 auto",
-          padding: "25px 0",
-          paddingBottom: "100px",
-        }}
-      >
-        <strong>Already have an account ? </strong>{" "}
-        <button className="signInBtn" onClick={() => navigate("/signin")}>
-          Sign In
-        </button>
-      </span>
     </div>
   );
 }

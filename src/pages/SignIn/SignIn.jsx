@@ -10,7 +10,8 @@ function SignIn() {
   const [auth, setAuth] = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = async e => {
+
+  const handleSignIn = async e => {
     e.preventDefault();
     const data = {
       email,
@@ -32,10 +33,10 @@ function SignIn() {
 
   return (
     <div className="signIn">
-      <div className="signInHeader mb-5">Sign in to your account</div>
+      <div className="signInHeader mb-5">Sign In</div>
       <ToastContainer theme="dark" />
 
-      <form className="signInForm" onSubmit={handleSubmit}>
+      <form className="signInForm" onSubmit={handleSignIn}>
         <div className="form-group">
           <label htmlFor="email">Email address</label>
           <input
@@ -59,25 +60,20 @@ function SignIn() {
 
         <button
           type="submit"
-          onClick={handleSubmit}
-          className="btn btn-primary btn-sm"
+          onClick={handleSignIn}
+          className="btn btn-primary btn-sm loginBtn"
         >
-          Submit
+          Sign In
         </button>
+        <div className="mt-3">
+          <span>
+            <strong>Don't have an account ? </strong>
+            <button className="signUpBtn" onClick={() => navigate("/signup")}>
+              Register
+            </button>
+          </span>
+        </div>
       </form>
-      <span
-        style={{
-          display: "block",
-          width: "50%",
-          margin: "20px auto",
-          paddingBottom: "50px",
-        }}
-      >
-        <strong>Don't have an account ? </strong>
-        <button className="signUpBtn" onClick={() => navigate("/signup")}>
-          Register
-        </button>
-      </span>
     </div>
   );
 }

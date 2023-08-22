@@ -38,3 +38,28 @@ export const deleteProduct = async id => {
   }
   return response;
 };
+
+export const getProductReportData = async id => {
+  let response;
+  try {
+    response = await api.get(`/products/${id}/report`);
+  } catch (error) {
+    return error;
+  }
+  return response;
+};
+
+export const getElectricityDataForProduct = async id => {
+  let response;
+  const token = localStorage.getItem("token");
+  try {
+    response = await api.get(`/products/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+  return response;
+};

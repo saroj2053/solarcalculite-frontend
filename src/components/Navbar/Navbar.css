@@ -43,63 +43,9 @@
   text-align: center;
 }
 
-/* .navbar-light .navbar-nav .nav-link {
-  color: #fff;
-} */
 
 .navbar-light .navbar-nav .hover__links:hover {
   color: #222
-}
-.navbar-dark .navbar-nav .hover__links.active {
-  color: #222;
-}
-
-.navbar-dark .navbar-nav .hover__links.active::after {
-  display: block;
-  content: "";
-  border-bottom: 2px solid #2596be;
-}
-
-
-
-.signInButton {
-  outline: none;
-  border-radius: 20px;
-  padding: 5px 20px !important;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  text-decoration: none;
-  color: #111 !important;
-  background-color: #fff;
-  border: 1px solid #000;
-  text-align: center;
-  transition: all 0.4s ease-in-out;
-}
-
-.signInButton:hover {
-  background-color: rgb(100, 99, 99);
-  color: #f3f3f3 !important;
-}
-
-.signUpButton {
-  outline: none;
-  border: 1px solid #2596be;
-  border-radius: 20px;
-  padding: 5px 20px !important;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  text-decoration: none;
-  color: #111 !important;
-  background-color: #fff;
-  text-align: center;
-  transition: all 0.4s ease-in-out;
-}
-
-.signUpButton:hover {
-  background-color: #2596be;
-  color: #fff !important;
 }
 
 .signOutButton {
@@ -119,19 +65,78 @@
   color: white !important;
 }
 
-.lightSeparator {
-  /* height: 1px;
-  background: linear-gradient(to right, transparent, #9ba3c2, transparent); */
 
-  border-bottom: 1px solid lightgray;
-}
-.darkSeparator {
-  /* height: 1px;
-  background: linear-gradient(to right, transparent, #141415, transparent); */
+/* ############### media queries ################ */
 
-  border-bottom: 2px solid lightgray;
+@media(max-width: 640px) {
+  .navbar-brand .navbar-brand__text {
+    font-size: 1.25rem;
+    font-weight: 600
+  }
+  .nav-item {
+    margin: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .nav-item {
+    margin: 10px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .signOutButton {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px 15px !important;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-decoration: none;
+    background: #ea3943;
+  }
+  
+  .signOutButton:hover {
+    background-color: #e01822;
+    color: white !important;
+  }
+
 }
 
-.darkModeIcon {
-  vertical-align: baseline;
-}
+@media screen and (min-width: 641px) and (max-width: 991px) {
+  .navbar-brand .navbar-brand__text {
+    font-size: 1.5rem;
+    font-weight: 600
+  }
+  .nav-item {
+    margin: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .nav-item {
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .signOutButton {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px 15px !important;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    background: #ea3943;
+  }
+  
+  .signOutButton:hover {
+    background-color: #e01822;
+    color: white !important;
+  }
+ }
+
+ @media screen and (min-width: 992px) {}

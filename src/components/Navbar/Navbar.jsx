@@ -1,17 +1,11 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-
-// import { BsSun, BsMoon } from "react-icons/bs";
-// import { useTheme, useThemeUpdate } from "../../context/ThemeContext";
 import { useAuth } from "../../context/AuthContext";
 import { signout } from "../../api/userApi";
 import { CgUserList } from "react-icons/cg";
 function Navbar() {
   const [auth, setAuth] = useAuth();
-  // const darkMode = useTheme();
-  // const toggleTheme = useThemeUpdate();
-  // const bgNav = darkMode ? "dark" : "light";
 
   const handleSignOut = async () => {
     await signout();
@@ -30,7 +24,6 @@ function Navbar() {
       >
         <div className="container">
           <NavLink className="navbar-brand" to="/">
-            {/* <img src={logoImage} alt="" /> */}
             <span className="navbar-brand__text">SolarCalculite</span>
           </NavLink>
           <button
@@ -51,16 +44,6 @@ function Navbar() {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/projects" className="nav-link hover__links">
-                  Projects
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/new-project" className="nav-link hover__links">
-                  New Project
-                </NavLink>
-              </li>
 
               {!auth.token ? (
                 <>
@@ -71,15 +54,21 @@ function Navbar() {
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="signup">
-                      Sign Up
+                      Register
                     </NavLink>
                   </li>
                 </>
               ) : (
                 <>
                   <li className="nav-item">
+                    <NavLink to="/projects" className="nav-link hover__links">
+                      Projects
+                    </NavLink>
+                  </li>
+
+                  <li className="nav-item">
                     <NavLink className="nav-link" to="profile">
-                      <CgUserList style={{ fontSize: "1.5rem" }} />
+                      <CgUserList style={{ fontSize: "1.5rem" }} />{" "}
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -93,30 +82,9 @@ function Navbar() {
                   </li>
                 </>
               )}
-              {/* 
-              {darkMode ? (
-                <>
-                  <li className="nav-item">
-                    <NavLink onClick={toggleTheme} className="nav-link">
-                      <BsSun className="darkModeIcon" />
-                    </NavLink>
-                  </li>
-                </>
-              ) : (
-                <li className="nav-item">
-                  <NavLink onClick={toggleTheme} className="nav-link">
-                    <BsMoon className="darkModeIcon" />
-                  </NavLink>
-                </li>
-              )} */}
             </ul>
           </div>
         </div>
-        {/* {darkMode ? (
-          <div className="lightSeparator"></div>
-        ) : (
-          <div className="darkSeparator"></div>
-        )} */}
       </nav>
     </>
   );

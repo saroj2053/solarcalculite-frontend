@@ -14,7 +14,7 @@ export const getNews = async () => {
       const shuffled = articles.sort(() => 0.5 - Math.random());
       return shuffled.slice(0, count);
     }
-    randomArticles = generateRandomArticles(response, 24);
+    randomArticles = generateRandomArticles(response, 60);
   } catch (error) {
     return error;
   }

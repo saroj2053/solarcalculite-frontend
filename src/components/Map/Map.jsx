@@ -1,25 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 import logoForMarker from "../../images/marker-icon-custom.png";
 import "./Map.css";
-import { deleteProduct, updateProduct } from "../../api/productApi";
-import { useParams } from "react-router-dom";
+import {
+  deleteProduct,
+  getElectricityDataForProduct,
+  getProductReportData,
+  updateProduct,
+} from "../../api/productApi";
+import { useNavigate, useParams } from "react-router-dom";
+import AddProductModal from "../AddProductModal/AddProductModal";
 
-const Map = ({ products }) => {
+import { TbTrashFilled } from "react-icons/tb";
+import { FaEdit } from "react-icons/fa";
+import { FaDatabase } from "react-icons/fa";
+import { BsBarChartLineFill } from "react-icons/bs";
+import { FaPlus } from "react-icons/fa";
+
+const Map = ({ products, project }) => {
   const appLogo = new Icon({
     iconUrl: logoForMarker,
     iconSize: [50, 50],
   });
 
+  const navigate = useNavigate();
   const params = useParams();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [addProductModal, setAddProductModal] = useState(false);
+
+  // eslint-disable-next-line
   const [mapProducts, setMapProducts] = useState(products);
   const [selectedProduct, setSelectedProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [productReportData, setProductReportData] = useState({});
 
   const [productName, setProductName] = useState("");
-  const [peekPower, setPeekPower] = useState("");
+  const [peakPower, setPeakPower] = useState("");
   const [area, setArea] = useState("");
   const [orientation, setOrientation] = useState("");
   const [tilt, setTilt] = useState("");
@@ -28,7 +53,7 @@ const Map = ({ products }) => {
 
   useEffect(() => {
     setProductName(selectedProduct.productName);
-    setPeekPower(selectedProduct.peekPower);
+    setPeakPower(selectedProduct.peakPower);
     setArea(selectedProduct.area);
     setOrientation(selectedProduct.orientation);
     setTilt(selectedProduct.tilt);
@@ -38,7 +63,7 @@ const Map = ({ products }) => {
 
   const data = {
     productName,
-    peekPower,
+    peakPower,
     area,
     orientation,
     tilt,
@@ -55,11 +80,6 @@ const Map = ({ products }) => {
     setIsModalOpen(false);
   };
 
-  // const locations = products.map(loc => [loc.lat, loc.lon]);
-  // const locations = [ [28.7041, 77.1025], [27.0008, 85.6538], [26.7271, 85.9407],
-  //   [50.8282, 12.9209],
-  // ];
-
   const handleProductUpdate = async () => {
     const updateResponse = await updateProduct(selectedProduct._id, data);
     console.log(updateResponse);
@@ -71,12 +91,81 @@ const Map = ({ products }) => {
 
   const handleDeleteProduct = async id => {
     const deleteResponse = await deleteProduct(id);
-    setMapProducts(products.filter(product => product._id !== id));
     if (deleteResponse.status === 200) {
-      if (selectedProduct._id === id) {
-        window.location = `/project/${params.id}`;
-      }
+      window.location = `/project/${params.id}`;
     }
+  };
+
+  const handleGenerateData = async id => {
+    setIsLoading(true);
+    const res = await getElectricityDataForProduct(id);
+    setTimeout(async () => {
+      setIsLoading(false);
+      if (res.status === 200) {
+        navigate("/success");
+      }
+    }, 3000);
+  };
+
+  const handleViewReport = async id => {
+    const res = await getProductReportData(id);
+    console.log(res);
+    if (res.status === 200 && res.statusText === "OK") {
+      const data = res.data.product;
+      setProductReportData(data);
+      navigate(`/product/${data._id}/report`, {
+        state: { productData: data },
+      });
+    }
+  };
+
+  const handleAddProductModalOpen = () => {
+    setAddProductModal(true);
+  };
+
+  const handleAddProductModalClose = () => {
+    setAddProductModal(false);
+  };
+
+  console.log(productReportData);
+  const ClickHandler = ({ setLat, setLon }) => {
+    const [clickedPosition, setClickedPosition] = useState(null);
+
+    useMapEvents({
+      click(e) {
+        const { lat, lng } = e.latlng;
+        setClickedPosition([lat, lng]);
+        setLat(lat);
+        setLon(lng);
+      },
+    });
+
+    return clickedPosition ? (
+      <Marker position={clickedPosition} icon={appLogo}>
+        <Popup>
+          <div>
+            <h2>Your Coordinates</h2>
+            <p>Latitude: {clickedPosition[0]}</p>
+            <p>Longitude: {clickedPosition[1]}</p>
+          </div>
+
+          <button
+            type="button"
+            data-toggle="modal"
+            data-target="#staticBackdrop"
+            className="btn btn-primary btn-sm"
+            onClick={handleAddProductModalOpen}
+          >
+            <div className="button-content">
+              <span className="icon__wrapper">
+                <FaPlus className="react__icon" />
+              </span>
+              <span className="button-text"> Add Product</span>
+            </div>
+          </button>
+        </Popup>
+      </Marker>
+    ) : null;
   };
 
   return (
@@ -85,12 +174,14 @@ const Map = ({ products }) => {
         className="map"
         center={
           mapProducts.length > 0
-            ? [mapProducts[0].lat, mapProducts[0].lon]
+            ? [
+                mapProducts[mapProducts.length - 1].lat,
+                mapProducts[mapProducts.length - 1].lon,
+              ]
             : [51.505, -0.09]
         }
         zoom={10}
         maxZoom={18}
-        minZoom={4}
         scrollWheelZoom={true}
       >
         <TileLayer
@@ -106,7 +197,7 @@ const Map = ({ products }) => {
                 <div>
                   <h1>{product.productName}</h1>
 
-                  <p>Power Peak: {product.peekPower}mW</p>
+                  <p>Peak Power: {product.peakPower}W</p>
                   <p>orientation: {product.orientation}</p>
                   <p>
                     inclination/tilt: ({product.tilt}
@@ -117,24 +208,66 @@ const Map = ({ products }) => {
                   <p>longitude: {product.lon}</p>
 
                   <div className="product__controls">
-                    <button className="btn btn-outline-success btn-sm">
-                      Generate data
-                    </button>
-                    <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#staticBackdrop"
-                      className="btn btn-outline-warning btn-sm"
-                      onClick={() => handleOpenModal(product)}
-                    >
-                      Edit
-                    </button>
+                    {product.isReadOnly === false && (
+                      <>
+                        <button
+                          className="btn btn-success btn-sm"
+                          onClick={() => handleGenerateData(product._id)}
+                        >
+                          <div className="button-content">
+                            <span className="button-text">
+                              {" "}
+                              {isLoading
+                                ? "Generating Data..."
+                                : "Generate Data"}{" "}
+                            </span>
+                            <span className="icon__wrapper">
+                              <FaDatabase className="react__icon" />
+                            </span>
+                          </div>
+                        </button>
+                        {product.ownedByCompany === "" && (
+                          <>
+                            <button
+                              type="button"
+                              data-toggle="modal"
+                              data-target="#staticBackdrop"
+                              className="btn btn-warning btn-sm"
+                              onClick={() => handleOpenModal(product)}
+                            >
+                              <div className="button-content">
+                                <span className="button-text"> Edit</span>
+                                <span className="icon__wrapper">
+                                  <FaEdit className="react__icon" />
+                                </span>
+                              </div>
+                            </button>
 
+                            <button
+                              className="btn btn-danger btn-sm"
+                              onClick={() => handleDeleteProduct(product._id)}
+                            >
+                              <div className="button-content">
+                                <span className="button-text"> Delete</span>
+                                <span className="icon__wrapper">
+                                  <TbTrashFilled className="react__icon" />
+                                </span>
+                              </div>
+                            </button>
+                          </>
+                        )}
+                      </>
+                    )}
                     <button
-                      className="btn btn-outline-danger btn-sm"
-                      onClick={() => handleDeleteProduct(product._id)}
+                      className="btn btn-secondary btn-sm"
+                      onClick={() => handleViewReport(product._id)}
                     >
-                      Delete
+                      <div className="button-content">
+                        <span className="button-text"> View Stats</span>
+                        <span className="icon__wrapper">
+                          <BsBarChartLineFill className="react__icon" />
+                        </span>
+                      </div>
                     </button>
                   </div>
                 </div>
@@ -142,6 +275,10 @@ const Map = ({ products }) => {
             </Marker>
           </div>
         ))}
+
+        {project.isActive === true && (
+          <ClickHandler setLat={setLat} setLon={setLon} />
+        )}
       </MapContainer>
       {isModalOpen && (
         <div
@@ -185,13 +322,13 @@ const Map = ({ products }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="peekPower">Peek Power</label>
+                  <label htmlFor="peakPower">Peek Power</label>
                   <input
                     type="text"
                     className="form-control"
-                    id="peekPower"
-                    value={peekPower}
-                    onChange={evt => setPeekPower(evt.target.value)}
+                    id="peakPower"
+                    value={peakPower}
+                    onChange={evt => setPeakPower(evt.target.value)}
                   />
                 </div>
                 <div className="form-group">
@@ -285,6 +422,15 @@ const Map = ({ products }) => {
             </div>
           </div>
         </div>
+      )}
+
+      {addProductModal && (
+        <AddProductModal
+          project={project}
+          onClose={handleAddProductModalClose}
+          latitude={lat}
+          longitude={lon}
+        />
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./EditProjectModal.css";
 
 import { useParams } from "react-router-dom";
 import { updateProject } from "../../api/projectApi";
@@ -10,7 +11,8 @@ function EditProjectModal({ project, handleProjectEditModalClose }) {
   const [title, setTitle] = useState(`${project.title}`);
   const [description, setDescription] = useState(`${project.description}`);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
     if (!title) {
       return toast.error("Title is required");
     }
@@ -78,6 +80,7 @@ function EditProjectModal({ project, handleProjectEditModalClose }) {
                   <textarea
                     className="form-control"
                     id="desc"
+                    rows={6}
                     value={description}
                     onChange={evt => setDescription(evt.target.value)}
                   />

@@ -9,7 +9,7 @@
 }
 
 .newProjectWrapper > h1 {
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bold;
   padding: 20px 0;
 }
@@ -18,3 +18,138 @@
   display: flex;
   gap: 2rem;
 }
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.saving-text {
+  margin-left: 5px; 
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+}
+
+.bsDbFill {
+
+  vertical-align: middle;
+  
+}
+
+@media screen and (max-width: 640px) {
+  .newProjectWrapper {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .newProjectWrapper > h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 20px 0;
+  }
+
+  .selection__text {
+    font-size: 1rem;
+  }
+
+  .newProject__label {
+    font-size: 0.85rem;
+  }
+
+  .selectedPredefinedProduct {
+    font-size: 0.85rem;
+  }
+
+  .productSelectionBtn {
+    font-size: 0.85rem;
+  }
+
+  .selectProductList {
+    font-size: 0.85rem;
+  }
+}
+  
+  @media screen and (min-width: 641px) and (max-width: 1007px) {
+    .newProjectWrapper {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .newProjectWrapper > h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 20px 0;
+    }
+  
+    .selection__text {
+      font-size: 1.25rem;
+    }
+  
+    .newProject__label {
+      font-size: 1rem;
+    }
+  
+    .selectedPredefinedProduct {
+      font-size: 1rem;
+    }
+  
+    .productSelectionBtn {
+      font-size: 1rem;
+    }
+  
+    .selectProductList {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 1008px) {
+    .newProjectWrapper {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .newProjectWrapper > h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      padding: 20px 0;
+    }
+  
+    .selection__text {
+      font-size: 1.25rem;
+    }
+  
+    .newProject__label {
+      font-size: 1rem;
+    }
+  
+    .selectedPredefinedProduct {
+      font-size: 1rem;
+    }
+  
+    .productSelectionBtn {
+      font-size: 1rem;
+    }
+  
+    .selectProductList {
+      font-size: 1rem;
+    }
+  }

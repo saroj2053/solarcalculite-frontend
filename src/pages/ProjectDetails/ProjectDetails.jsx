@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { deleteProject, getSingleProject } from "../../api/projectApi";
+import {
+  deleteProject,
+  generateProjectReport,
+  getSingleProject,
+} from "../../api/projectApi";
 import Loader from "../../components/Loader/Loader";
-// import { useAuth } from "../../context/AuthContext";
+
 import Map from "../../components/Map/Map";
 import { useNavigate } from "react-router-dom";
 
 import "./ProjectDetails.css";
-import AddProductModal from "../../components/AddProductModal/AddProductModal";
+
 import EditProjectModal from "../../components/EditProjectModal/EditProjectModal";
-// import { useTheme } from "../../context/ThemeContext";
+import { TbTrashFilled } from "react-icons/tb";
+import { FaEdit } from "react-icons/fa";
+import { FaDatabase } from "react-icons/fa";
 
 function ProjectDetails() {
   const navigate = useNavigate();
-  // const [auth] = useAuth();
+
   const [project, setProject] = useState([]);
   const [products, setProducts] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isProjectEditModalOpen, setIsProjectEditModalOpen] = useState(false);
-  // const [ownsProject, setOwnsProject] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-  // const darkTheme = useTheme();
-  // const btnColor = darkTheme ? "btnDark" : "btnLight";
-
-  // getting params id for making an api call
   const params = useParams();
   const projectId = params.id;
 
@@ -34,10 +36,6 @@ function ProjectDetails() {
       if (projectResponse.status === 200) {
         setProject(projectResponse.data.project);
         setProducts(projectResponse.data.project.products);
-
-        // setOwnsProject(
-        //   auth.user.username === projectResponse.data.project.author.username
-        // );
       }
     }
 
@@ -46,21 +44,29 @@ function ProjectDetails() {
     // eslint-disable-next-line
   }, []);
 
+  const activeProducts = products.filter(product => {
+    return product.isReadOnly === false;
+  });
+
+  // check if there are active products in a project
+  const areActiveProductsPresent = activeProducts.length > 0;
+
   const handleDelete = async () => {
     const deleteResponse = await deleteProject(projectId);
-    if (deleteResponse.status === 200) {
+    if (deleteResponse.status === 200 && deleteResponse.statusText === "OK") {
       navigate("/projects");
     }
   };
 
-  const handleGenerateData = async () => {};
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleGenerateData = async () => {
+    setIsGenerating(true);
+    const res = await generateProjectReport(projectId);
+    setTimeout(async () => {
+      setIsGenerating(false);
+      if (res.status === 200) {
+        navigate("/success");
+      }
+    }, 3000);
   };
 
   const handleProjectEditModalOpen = () => {
@@ -70,6 +76,11 @@ function ProjectDetails() {
   const handleProjectEditModalClose = () => {
     setIsProjectEditModalOpen(false);
   };
+
+  const handleGoBack = () => {
+    navigate("/projects");
+  };
+
   return (
     <>
       {project.length === 0 ? (
@@ -77,124 +88,147 @@ function ProjectDetails() {
       ) : (
         <>
           <div className="projectDetails">
-            <p className="project__ownedBy">
+            <button
+              className="btn btn-secondary btn-sm btnGoBack"
+              onClick={handleGoBack}
+            >
+              Go Back
+            </button>
+            <p className="project__ownedBy mt-3">
               @
               {project.author.name +
                 " on " +
                 new Date(project.createdAt).toDateString()}
             </p>
-            <div className="project__title">{project.title}</div>
-            <div className="project__desc">{project.description}</div>
-            <div
-              id="carouselExampleControls"
-              className="carousel slide"
-              data-ride="carousel"
-            >
-              <div className="carousel-inner">
-                {project.images.map((image, idx) => (
-                  <div
-                    key={image._id}
-                    className={` carouselImg carousel-item ${
-                      idx === 0 ? "active" : ""
-                    }`}
-                  >
-                    <img
-                      key={image._id}
-                      className="d-block w-100"
-                      style={{
-                        width: "500px",
-                        height: "300px",
-                        objectFit: "contain",
-                      }}
-                      src={image.url}
-                      alt=""
-                    />
-                  </div>
-                ))}{" "}
+            <div className="infoContainer">
+              <div className="text__info">
+                <div className="project__title">{project.title}</div>
+                <div className="project__desc mb-3">{project.description}</div>
               </div>
 
-              {project.images.length > 1 ? (
-                <>
-                  {" "}
-                  <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-target="#carouselExampleControls"
-                    data-slide="prev"
-                  >
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Previous</span>
-                  </button>
-                  <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-target="#carouselExampleControls"
-                    data-slide="next"
-                  >
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Next</span>
-                  </button>
-                </>
-              ) : (
-                ""
-              )}
+              <div
+                id="carouselExampleControls"
+                className="carousel slide"
+                data-ride="carousel"
+              >
+                <div className="carousel-inner">
+                  {project.images.map((image, idx) => (
+                    <div
+                      key={image._id}
+                      className={` carouselImg carousel-item ${
+                        idx === 0 ? "active" : ""
+                      }`}
+                    >
+                      <img
+                        key={image._id}
+                        className="d-block w-100"
+                        style={{
+                          width: "500px",
+                          height: "300px",
+                          objectFit: "contain",
+                        }}
+                        src={image.url}
+                        alt=""
+                      />
+                    </div>
+                  ))}{" "}
+                </div>
+                {project.images.length > 1 ? (
+                  <>
+                    {" "}
+                    <button
+                      className="carousel-control-prev"
+                      type="button"
+                      data-target="#carouselExampleControls"
+                      data-slide="prev"
+                    >
+                      <span
+                        className="carousel-control-prev-icon"
+                        // aria-hidden="true"
+                      ></span>
+                      <span className="sr-only">Previous</span>
+                    </button>
+                    <button
+                      className="carousel-control-next"
+                      type="button"
+                      data-target="#carouselExampleControls"
+                      data-slide="next"
+                    >
+                      <span
+                        className="carousel-control-next-icon"
+                        // aria-hidden="true"
+                      ></span>
+                      <span className="sr-only">Next</span>
+                    </button>
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            {/* {ownsProject && ( */}
-            <div className="controls">
-              <button
-                // className={`edit ${btnColor}`}
-                type="button"
-                data-toggle="modal"
-                data-target="#staticBackdrop"
-                className="btn btn-outline-warning btn-sm"
-                // onClick={() => navigate(`/project/${project._id}/edit`)}
-                onClick={handleProjectEditModalOpen}
+
+            {project.isActive === true ? (
+              <div className="controls mt-4">
+                <button
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#staticBackdrop"
+                  className="btn btn-warning btn-sm"
+                  onClick={handleProjectEditModalOpen}
+                >
+                  <div className="button-content">
+                    <span className="button-text"> Edit</span>
+                    <span className="icon__wrapper">
+                      <FaEdit className="react__icon" />
+                    </span>
+                  </div>
+                </button>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={handleDelete}
+                >
+                  <div className="button-content">
+                    <span className="button-text"> Delete</span>
+                    <span className="icon__wrapper">
+                      <TbTrashFilled className="react__icon" />
+                    </span>
+                  </div>
+                </button>
+                {areActiveProductsPresent && (
+                  <button
+                    className="btn btn-success btn-sm btnGenerateData"
+                    onClick={handleGenerateData}
+                  >
+                    <div className="button-content">
+                      <span className="button-text">
+                        {" "}
+                        {isGenerating
+                          ? "Generating Data..."
+                          : "Generate Data"}{" "}
+                      </span>
+                      <span className="icon__wrapper">
+                        <FaDatabase className="react__icon" />
+                      </span>
+                    </div>
+                  </button>
+                )}
+              </div>
+            ) : (
+              <small
+                style={{ marginBottom: "1rem" }}
+                id="infoHelp"
+                className="form-text text-muted"
               >
-                Edit
-              </button>
-              <button
-                // className={`delete ${btnColor}`}
-                className="btn btn-outline-danger btn-sm"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
-              <button
-                // className={`generateData ${btnColor}`}
-                className="btn btn-outline-success btn-sm"
-                onClick={handleGenerateData}
-              >
-                Generate Data
-              </button>
-              <button
-                type="button"
-                data-toggle="modal"
-                data-target="#staticBackdrop"
-                className="btn btn-outline-primary btn-sm"
-                onClick={handleOpenModal}
-              >
-                Add Product
-              </button>
-            </div>
-            {/* )} */}
+                Info: This project is read only
+              </small>
+            )}
             <div className="products__section">
-              <Map products={products} />
+              <Map products={products} project={project} />
             </div>
           </div>
         </>
       )}
-      {isModalOpen && (
-        <AddProductModal
-          handleCloseModal={handleCloseModal}
-          project={project}
-        />
-      )}
+
       {isProjectEditModalOpen && (
         <EditProjectModal
           handleProjectEditModalClose={handleProjectEditModalClose}

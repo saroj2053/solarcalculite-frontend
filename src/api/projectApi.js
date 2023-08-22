@@ -84,3 +84,18 @@ export const deleteProject = async id => {
   }
   return response;
 };
+
+export const generateProjectReport = async id => {
+  let response;
+  const token = localStorage.getItem("token");
+  try {
+    response = await api.get(`/projects/${id}/generateReport`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+  return response;
+};
