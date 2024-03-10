@@ -12,11 +12,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
+
 }
 
-.bg-light {
-  background-color:#fad6a3 !important;
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: #e76f04;
 }
 
 
@@ -25,6 +26,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .navbar-brand .navbar-brand__text {
   font-size: 1.6rem;
   font-weight: 600
@@ -73,18 +75,20 @@
     font-size: 1.25rem;
     font-weight: 600
   }
+
   .nav-item {
     margin: 15px;
     font-size: 16px;
     font-weight: 700;
     text-align: center;
   }
-  
+
   .nav-item {
     margin: 10px;
     font-size: 14px;
     font-weight: 700;
   }
+
   .signOutButton {
     border: none;
     outline: none;
@@ -96,7 +100,7 @@
     text-decoration: none;
     background: #ea3943;
   }
-  
+
   .signOutButton:hover {
     background-color: #e01822;
     color: white !important;
@@ -109,18 +113,20 @@
     font-size: 1.5rem;
     font-weight: 600
   }
+
   .nav-item {
     margin: 15px;
     font-size: 16px;
     font-weight: 700;
     text-align: center;
   }
-  
+
   .nav-item {
     margin: 10px;
     font-size: 1rem;
     font-weight: 700;
   }
+
   .signOutButton {
     border: none;
     outline: none;
@@ -132,11 +138,11 @@
     text-decoration: none;
     background: #ea3943;
   }
-  
+
   .signOutButton:hover {
     background-color: #e01822;
     color: white !important;
   }
- }
+}
 
- @media screen and (min-width: 992px) {}
+@media screen and (min-width: 992px) {}

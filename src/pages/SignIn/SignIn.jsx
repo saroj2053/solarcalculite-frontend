@@ -32,11 +32,10 @@ function SignIn() {
   };
 
   return (
-    <div className="signIn">
-      <div className="signInHeader mb-5">Sign In</div>
+    <div className="signInn mt-5">
       <ToastContainer theme="dark" />
-
       <form className="signInForm" onSubmit={handleSignIn}>
+        <h2 className="signInHeader mb-5">Sign In</h2>
         <div className="form-group">
           <label htmlFor="email">Email address</label>
           <input

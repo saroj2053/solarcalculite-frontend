@@ -42,11 +42,10 @@ function SignUp() {
   };
 
   return (
-    <div className="signUp">
-      <div className="signUpHeader">Register</div>
-
+    <div className="signUp mt-5">
       <ToastContainer theme="dark" />
       <form className="signUpForm">
+        <h2 className="signUpHeader">Sign Up</h2>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input

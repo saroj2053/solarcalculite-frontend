@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
@@ -24,7 +23,8 @@ function App() {
 
         <div className="container">
           <Routes>
-            <Route path="/" exact element={<Home />} />
+            <Route path="/" exact element={<SignIn />} />
+            <Route path="signup" exact element={<SignUp />} />
             <Route
               path="/profile"
               exact
@@ -75,11 +75,8 @@ function App() {
             <Route path="/product/:id/report" element={<Report />} />
 
             <Route path="*" element={<Error />} />
-            <Route path="signin" exact element={<SignIn />} />
-            <Route path="signup" exact element={<SignUp />} />
           </Routes>
         </div>
-
         <Footer />
       </BrowserRouter>
     </>

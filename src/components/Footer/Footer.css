@@ -1,127 +1,18 @@
 .footer__light {
-  background-color: #fad6a3;
+  background-color: #f8f9fa;
   color: black;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fad6a3;
+.footerContentWrapper {
+  margin-top: 3rem;
+  text-align: center;
 }
 
-.footer__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; 
-  align-items: center;  
-}
-
-.footer__left {
-  display: flex;
-  align-items: center;
-}
-
-.footer__right {
-  width: 25%;
-  height: inherit;
-  color: gray;
-  cursor: pointer;
-  display: flex;
-  gap: 20px;
-
-}
-
-.footer__left p{
-  margin-bottom: 0;
-}
-
-.footer__right p {
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.footer__right  p:hover {
-  color: black;
-  text-decoration: underline;
+.footerContentWrapper p {
+  font-size: 0.875rem;
+  letter-spacing: 2.5px;
 }
 
 .content-container {
-  position: relative;
-  margin-top: 100px;
-}
-
-@media screen and (max-width: 640px) {
-  .footer__container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer__left p{
-    padding-top: 5px;
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
-
-  .footer__right {
-    width: 100%;
-    padding-top: 5px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footer__right p {
-    font-size: 0.5rem;
-  }
-}
-
-@media screen and (min-width:641px) and (max-width: 991px) {
-  .footer__container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer__left p{
-    padding-top: 10px;
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-
-  .footer__right {
-    width: 100%;
-    padding-top: 5px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footer__right p {
-    font-size: 0.65rem;
-  }
-}
-
-
-@media screen and (min-width:992px) {
-  .footer__container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer__left p{
-    padding-top: 15px;
-    font-size: 1rem;
-    font-weight: 600;
- 
-  }
-
-  .footer__right {
-    width: 100%;
-    padding-top: 5px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footer__right p {
-    font-size: 0.8rem;
-  }
+  margin-top: 5rem;
 }

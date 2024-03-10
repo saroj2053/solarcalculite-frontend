@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { signout } from "../../api/userApi";
 import { CgUserList } from "react-icons/cg";
+import logo from "../../images/solarCalculiteLogo.png";
 function Navbar() {
   const [auth, setAuth] = useAuth();
 
@@ -24,7 +25,9 @@ function Navbar() {
       >
         <div className="container">
           <NavLink className="navbar-brand" to="/">
-            <span className="navbar-brand__text">SolarCalculite</span>
+            <span className="navbar-brand__text">
+              <img src={logo} alt="" />
+            </span>
           </NavLink>
           <button
             className="navbar-toggler"
@@ -39,22 +42,16 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link hover__links">
-                  Home
-                </NavLink>
-              </li>
-
               {!auth.token ? (
                 <>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="signin">
+                    <NavLink className="nav-link" to="/">
                       Sign In {""}
                     </NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="signup">
-                      Register
+                      Sign Up
                     </NavLink>
                   </li>
                 </>
@@ -75,7 +72,7 @@ function Navbar() {
                     <NavLink
                       onClick={handleSignOut}
                       className="nav-link signOutButton"
-                      to="signin"
+                      to="/"
                     >
                       Sign Out {""}
                     </NavLink>

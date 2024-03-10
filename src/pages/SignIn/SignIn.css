@@ -1,161 +1,126 @@
-.signIn {
-  height: 80vh;
+.signInForm {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 3rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
 }
-
 
 .signInHeader {
   font-size: 2rem;
   font-weight: bold;
-  width: inherit;
   text-align: center;
-
 }
 
-.signInForm {
-  display: block;
-  width: 50%;
-  margin: 0 auto;
+.form-group>input {
+  border: none;
+  padding: 15px 10px;
+  background-color: #f3f3f3;
+  font-size: 14px;
 }
 
 
+.loginBtn {
+  text-transform: uppercase;
+  font-weight: 500;
+}
 
-.form-group > input {
+.signUpBtn {
+  border: none;
+  outline: none;
+  font-weight: bold;
+  background: transparent;
+  color: #c5770a;
+}
+
+.signUpBtn:hover {
+  text-decoration: underline;
+}
+
+
+/* ################### media queries ################### */
+
+@media screen and (max-width: 640px) {
+
+  .signInHeader {
+    font-size: 1.5rem;
+  }
+
+  .signInForm {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+
+  .form-group>input {
     border: none;
     padding: 15px 10px;
     background-color: #f3f3f3;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
-  
+
 
   .loginBtn {
     text-transform: uppercase;
     font-weight: 500;
   }
 
-  .signUpBtn {
-    border: none;
-    outline: none;
-    font-weight:bold;
-    background: transparent;
-    color: #c5770a;
-  }
+}
 
-  .signUpBtn:hover {
-    text-decoration: underline;
-  }
-
-
-  /* ################### media queries ################### */
-
- @media screen and (max-width: 640px) {
-  .signIn {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
- 
-  .signInHeader {
-    font-size: 1.5rem;
-    font-weight: bold;
-    width: inherit;
-    text-align: center;
-  
-  }
-  
-  .signInForm {
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  
-  .form-group > input {
-      border: none;
-      padding: 15px 10px;
-      background-color: #f3f3f3;
-      font-size: 0.875rem;
-    }
-    
-  
-    .loginBtn {
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-  
- }
 @media screen and (min-width: 641px) and (max-width: 991px) {
-  .signIn {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
- 
+
+
   .signInHeader {
     font-size: 1.5rem;
-    font-weight: bold;
-    width: inherit;
-    text-align: center;
-  
   }
-  
+
   .signInForm {
     display: block;
     width: 80%;
     margin: 0 auto;
   }
-  
-  
-  .form-group > input {
-      border: none;
-      padding: 15px 10px;
-      background-color: #f3f3f3;
-      font-size: 0.875rem;
-    }
-    
-  
-    .loginBtn {
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-  
-  
- }
-@media screen and (min-width: 992px) { 
-  .signIn {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+
+  .form-group>input {
+    border: none;
+    padding: 15px 10px;
+    background-color: #f3f3f3;
+    font-size: 0.875rem;
   }
- 
+
+
+  .loginBtn {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+
+}
+
+@media screen and (min-width: 992px) {
+
+
   .signInHeader {
     font-size: 2rem;
-    font-weight: bold;
-    width: inherit;
-    text-align: center;
-  
   }
-  
+
   .signInForm {
     display: block;
     width: 60%;
     margin: 0 auto;
   }
-  
-  .form-group > input {
-      border: none;
-      padding: 15px 10px;
-      background-color: #f3f3f3;
-      font-size: 0.875rem;
-    }
-    
-    .loginBtn {
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-} 
+
+  .form-group>input {
+    border: none;
+    padding: 15px 10px;
+    background-color: #f3f3f3;
+    font-size: 0.875rem;
+  }
+
+  .loginBtn {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
