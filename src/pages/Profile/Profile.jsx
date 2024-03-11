@@ -41,7 +41,7 @@ function Profile() {
       });
       localStorage.removeItem("auth");
 
-      navigate("/signin");
+      navigate("/");
     }
   };
 
