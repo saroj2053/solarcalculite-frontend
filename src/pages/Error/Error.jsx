@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Error.css";
 function Error() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+  };
   return (
     <div className="errorPage">
       <h1 className="errorTitle">404</h1>
@@ -11,8 +15,8 @@ function Error() {
         changed or is temporarily unavailable.
       </p>
       <button className="btn btn-primary btn-sm">
-        <Link className="errorLink" to="/">
-          BACK TO HOMEPAGE
+        <Link className="errorLink" onClick={handleClick}>
+          Go Back
         </Link>
       </button>
     </div>
