@@ -3,7 +3,6 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { signout } from "../../api/userApi";
-import { CgUserList } from "react-icons/cg";
 import logo from "../../images/solarCalculiteLogo.png";
 function Navbar() {
   const [auth, setAuth] = useAuth();
@@ -65,7 +64,10 @@ function Navbar() {
 
                   <li className="nav-item">
                     <NavLink className="nav-link" to="profile">
-                      <CgUserList style={{ fontSize: "1.5rem" }} />{" "}
+                      Welcome,
+                      <span style={{ textDecoration: "underline" }}>
+                        {auth.user.user.name}
+                      </span>
                     </NavLink>
                   </li>
                   <li className="nav-item">
