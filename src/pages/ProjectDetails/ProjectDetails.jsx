@@ -166,10 +166,10 @@ function ProjectDetails() {
                 )}
               </div>
             </div>
-            <p className="lead">
+            {/* <p className="lead">
               Unfortunately, the api for getting weather data is not working. As
               a result, Generate Data button is disabled.
-            </p>
+            </p> */}
             {project.isActive === true ? (
               <div className="controls mt-4">
                 <button
