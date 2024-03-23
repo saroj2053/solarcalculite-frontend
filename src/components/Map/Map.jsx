@@ -213,6 +213,7 @@ const Map = ({ products, project }) => {
                         <button
                           className="btn btn-success btn-sm"
                           onClick={() => handleGenerateData(product._id)}
+                          disabled
                         >
                           <div className="button-content">
                             <span className="button-text">

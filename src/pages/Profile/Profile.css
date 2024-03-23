@@ -30,23 +30,24 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  
+
 }
 
-.textWrapper .icon, .textWrapper .detailUser {
+.textWrapper .icon,
+.textWrapper .detailUser {
   font-size: 20px;
 }
 
 /* ################### media queries ################### */
 
-@media screen and (max-width: 640px) { 
+@media screen and (max-width: 640px) {
   .profile {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .profile__details {
     display: flex;
     flex-direction: column;
@@ -54,6 +55,7 @@
     align-items: flex-start;
     width: 100%;
   }
+
   .profile__header {
     font-size: 2rem;
     font-weight: 600;
@@ -77,26 +79,27 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    
+
   }
-  
+
   .textWrapper .icon {
     font-size: 15px;
     padding: 10px;
   }
-  
+
   .textWrapper .detailUser {
     font-size: 0.9rem;
   }
 }
-@media screen and (min-width: 641px) and (max-width: 1007px) { 
+
+@media screen and (min-width: 641px) and (max-width: 1007px) {
   .profile {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .profile__details {
     display: flex;
     flex-direction: column;
@@ -104,6 +107,7 @@
     align-items: flex-start;
     width: 100%;
   }
+
   .profile__header {
     font-size: 2.5rem;
     font-weight: 600;
@@ -127,24 +131,25 @@
     gap: 1rem;
     align-items: center;
   }
-  
+
   .textWrapper .icon {
     font-size: 18px;
     padding: 10px;
   }
-  
+
   .textWrapper .detailUser {
     font-size: 1.1rem;
   }
 }
-@media screen and (min-width: 1008px) { 
+
+@media screen and (min-width: 1008px) {
   .profile {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .profile__details {
     display: flex;
     flex-direction: column;
@@ -152,6 +157,7 @@
     align-items: flex-start;
     width: 100%;
   }
+
   .profile__header {
     font-size: 3rem;
     font-weight: 600;
@@ -174,14 +180,14 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    
+
   }
-  
+
   .textWrapper .icon {
     font-size: 22px;
     padding: 10px;
   }
-  
+
   .textWrapper .detailUser {
     font-size: 1.25rem;
   }

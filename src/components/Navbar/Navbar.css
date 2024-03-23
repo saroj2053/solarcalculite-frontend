@@ -50,6 +50,24 @@
   color: #222
 }
 
+.signUpButton {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 5px 20px !important;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  background: #c5770a;
+  color: #fff !important;
+  transition: background 0.3s ease;
+}
+
+.signUpButton:hover {
+  background-color: #eca33d;
+}
+
 .signOutButton {
   border: none;
   outline: none;

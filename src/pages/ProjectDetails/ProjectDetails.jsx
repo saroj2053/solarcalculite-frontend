@@ -166,7 +166,10 @@ function ProjectDetails() {
                 )}
               </div>
             </div>
-
+            <p className="lead">
+              Unfortunately, the api for getting weather data is not working. As
+              a result, Generate Data button is disabled.
+            </p>
             {project.isActive === true ? (
               <div className="controls mt-4">
                 <button
@@ -195,22 +198,25 @@ function ProjectDetails() {
                   </div>
                 </button>
                 {areActiveProductsPresent && (
-                  <button
-                    className="btn btn-success btn-sm btnGenerateData"
-                    onClick={handleGenerateData}
-                  >
-                    <div className="button-content">
-                      <span className="button-text">
-                        {" "}
-                        {isGenerating
-                          ? "Generating Data..."
-                          : "Generate Data"}{" "}
-                      </span>
-                      <span className="icon__wrapper">
-                        <FaDatabase className="react__icon" />
-                      </span>
-                    </div>
-                  </button>
+                  <>
+                    <button
+                      className="btn btn-success btn-sm btnGenerateData"
+                      onClick={handleGenerateData}
+                      disabled
+                    >
+                      <div className="button-content">
+                        <span className="button-text">
+                          {" "}
+                          {isGenerating
+                            ? "Generating Data..."
+                            : "Generate Data"}{" "}
+                        </span>
+                        <span className="icon__wrapper">
+                          <FaDatabase className="react__icon" />
+                        </span>
+                      </div>
+                    </button>
+                  </>
                 )}
               </div>
             ) : (

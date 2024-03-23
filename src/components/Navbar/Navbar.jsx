@@ -23,7 +23,7 @@ function Navbar() {
         className={`navbar navbar-expand-lg navbar-light bg-light navbar__nav`}
       >
         <div className="container">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="#">
             <span className="navbar-brand__text">
               <img src={logo} alt="" />
             </span>
@@ -49,7 +49,7 @@ function Navbar() {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="signup">
+                    <NavLink className="nav-link signUpButton" to="signup">
                       Sign Up
                     </NavLink>
                   </li>
@@ -65,8 +65,13 @@ function Navbar() {
                   <li className="nav-item">
                     <NavLink className="nav-link" to="profile">
                       Welcome,
-                      <span style={{ textDecoration: "underline" }}>
-                        {auth.user.user.name}
+                      <span
+                        style={{
+                          textDecoration: "underline",
+                          paddingLeft: "5px",
+                        }}
+                      >
+                        {auth.user.name}
                       </span>
                     </NavLink>
                   </li>

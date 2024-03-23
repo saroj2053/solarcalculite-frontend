@@ -100,6 +100,7 @@ function Profile() {
               <button
                 className="btn btn-danger btn-sm"
                 onClick={handleDeleteUser}
+                disabled
               >
                 <div className="button-content">
                   <span className="button-text"> Delete Account</span>

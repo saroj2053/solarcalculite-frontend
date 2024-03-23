@@ -107,7 +107,7 @@ function SignUp() {
         <div className="mt-3">
           <span className="cta__register__login">
             <strong>Already have an account ? </strong>{" "}
-            <button className="signInBtn" onClick={() => navigate("/signin")}>
+            <button className="signInBtn" onClick={() => navigate("/")}>
               Sign In
             </button>
           </span>
