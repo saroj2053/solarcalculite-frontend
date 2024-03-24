@@ -6,7 +6,7 @@ function Protected({ children }) {
   const [auth] = useAuth();
 
   if (!auth.token) {
-    return <Navigate to="/signin" />;
+    return <Navigate to="/" />;
   } else {
     return children;
   }
