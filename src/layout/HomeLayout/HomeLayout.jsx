@@ -6,7 +6,9 @@ const HomeLayout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <main className="container">{children}</main>
+      <main className="container" style={{ minHeight: "80vh" }}>
+        {children}
+      </main>
       <Footer />
     </div>
   );
