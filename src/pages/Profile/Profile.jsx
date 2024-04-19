@@ -15,7 +15,7 @@ import HomeLayout from "../../layout/HomeLayout/HomeLayout";
 import useAuthUserStore from "../../store/userStore";
 
 function Profile() {
-  const { authUser, setAuthUser } = useAuthUserStore();
+  const { setAuthUser } = useAuthUserStore();
   const [userDetails, setUserDetails] = useState([]);
   const [loading, setLoading] = useState(false);
 

@@ -17,7 +17,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { authUser, setAuthUser } = useAuthUserStore();
+  const { setAuthUser } = useAuthUserStore();
 
   const handleRegister = async (evt) => {
     evt.preventDefault();

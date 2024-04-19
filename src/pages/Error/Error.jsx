@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Error.css";
-import HomeLayout from "../../layout/HomeLayout/HomeLayout";
+
 function Error() {
   const navigate = useNavigate();
   const handleClick = () => {

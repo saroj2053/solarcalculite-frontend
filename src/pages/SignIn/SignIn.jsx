@@ -3,18 +3,18 @@ import "./SignIn.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../../api/userApi";
-// import { useAuth } from "../../context/AuthContext";
+
 import solarCalculiteLogo from "../../images/solarCalculiteLogo.png";
 import useAuthUserStore from "../../store/userStore";
 import signInBgImage from "../../images/pexels-solar-panel.jpg";
 
 function SignIn() {
   const navigate = useNavigate();
-  // const [auth, setAuth] = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { authUser, setAuthUser } = useAuthUserStore();
+  const { setAuthUser } = useAuthUserStore();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
