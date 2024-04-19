@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
-import { useAuth } from "../../context/AuthContext";
 import { deleteProfile, profile } from "../../api/userApi";
 
 import { useNavigate } from "react-router-dom";
@@ -12,9 +11,11 @@ import { TiUserDelete } from "react-icons/ti";
 import { FaUserEdit } from "react-icons/fa";
 
 import avatar from "../../images/6596121.png";
+import HomeLayout from "../../layout/HomeLayout/HomeLayout";
+import useAuthUserStore from "../../store/userStore";
 
 function Profile() {
-  const [auth, setAuth] = useAuth();
+  const { authUser, setAuthUser } = useAuthUserStore();
   const [userDetails, setUserDetails] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -22,23 +23,25 @@ function Profile() {
 
   useEffect(() => {
     async function getUserDetails() {
-      const userResponse = await profile();
-      if (userResponse.status === 200) {
-        setUserDetails(userResponse.data.user);
+      try {
+        setLoading(true);
+        const userResponse = await profile();
+        if (userResponse.status === 200) {
+          setUserDetails(userResponse.data.user);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
     getUserDetails();
-    setLoading(false);
   }, []);
 
   const handleDeleteUser = async () => {
     const deleteResponse = await deleteProfile();
     if (deleteResponse.status === 200) {
-      setAuth({
-        ...auth,
-        user: null,
-        token: "",
-      });
+      setAuthUser(null);
       localStorage.removeItem("auth");
 
       navigate("/");
@@ -46,7 +49,7 @@ function Profile() {
   };
 
   return (
-    <>
+    <HomeLayout>
       {loading ? (
         <Loader text="Profile Details" />
       ) : (
@@ -113,7 +116,7 @@ function Profile() {
           </div>
         </div>
       )}
-    </>
+    </HomeLayout>
   );
 }
 

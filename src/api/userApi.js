@@ -8,7 +8,7 @@ const api = axios.create({
   },
 });
 
-export const signin = async data => {
+export const signin = async (data) => {
   let response;
   try {
     response = await api.post("/auth/signin", data);
@@ -19,7 +19,7 @@ export const signin = async data => {
   return response;
 };
 
-export const signup = async data => {
+export const signup = async (data) => {
   let response;
   try {
     response = await api.post("/auth/signup", data);
@@ -57,7 +57,7 @@ export const profile = async () => {
   return response;
 };
 
-export const updateProfile = async data => {
+export const updateProfile = async (data) => {
   let response;
   const token = localStorage.getItem("token");
   try {
@@ -87,7 +87,7 @@ export const deleteProfile = async () => {
   return response;
 };
 
-export const updatePassword = async data => {
+export const updatePassword = async (data) => {
   let response;
   const token = localStorage.getItem("token");
   try {
@@ -102,7 +102,7 @@ export const updatePassword = async data => {
   return response;
 };
 
-const storeUserInLocalStorage = data => {
+const storeUserInLocalStorage = (data) => {
   localStorage.setItem("token", data.token);
   localStorage.setItem("user", JSON.stringify(data.user));
 };

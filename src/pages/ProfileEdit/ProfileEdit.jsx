@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import "./ProfileEdit.css";
-import { useAuth } from "../../context/AuthContext";
 import { updateProfile } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import avatar from "../../images/6596121.png";
+import HomeLayout from "../../layout/HomeLayout/HomeLayout";
+import useAuthUserStore from "../../store/userStore";
+
 function ProfileEdit() {
-  const [auth, setAuth] = useAuth();
+  const { authUser, setAuthUser } = useAuthUserStore();
   const navigate = useNavigate();
-  let [name, setName] = useState(auth.user.name);
-  let [username, setUsername] = useState(auth.user.username);
-  let [email, setEmail] = useState(auth.user.email);
+  let [name, setName] = useState(authUser.user.name);
+  let [username, setUsername] = useState(authUser.user.username);
+  let [email, setEmail] = useState(authUser.user.email);
 
   const data = { name, username, email };
 
-  const handleProfileUpdate = async evt => {
+  const handleProfileUpdate = async (evt) => {
     evt.preventDefault();
 
     try {
       const updateResponse = await updateProfile(data);
       if (updateResponse.status === 200) {
-        setAuth({ user: updateResponse.data.user, token: auth.token });
+        setAuthUser({ user: updateResponse.data.user, token: authUser.token });
         navigate("/profile");
       } else if (updateResponse.code === "ERR_BAD_REQUEST") {
         toast.error(updateResponse.response.data.message);
@@ -31,7 +33,7 @@ function ProfileEdit() {
   };
 
   return (
-    <>
+    <HomeLayout>
       <button
         className="btn btn-secondary btn-sm mt-3"
         onClick={() => navigate("/profile")}
@@ -54,7 +56,7 @@ function ProfileEdit() {
             <input
               type="text"
               value={name}
-              onChange={evt => setName(evt.target.value)}
+              onChange={(evt) => setName(evt.target.value)}
               className="form-control"
               id="name"
               name="name"
@@ -65,7 +67,7 @@ function ProfileEdit() {
             <input
               type="text"
               value={username}
-              onChange={evt => setUsername(evt.target.value)}
+              onChange={(evt) => setUsername(evt.target.value)}
               className="form-control"
               id="username"
               name="username"
@@ -76,7 +78,7 @@ function ProfileEdit() {
             <input
               type="email"
               value={email}
-              onChange={evt => setEmail(evt.target.value)}
+              onChange={(evt) => setEmail(evt.target.value)}
               className="form-control"
               id="email"
               name="email"
@@ -90,7 +92,7 @@ function ProfileEdit() {
           </button>
         </form>
       </div>
-    </>
+    </HomeLayout>
   );
 }
 

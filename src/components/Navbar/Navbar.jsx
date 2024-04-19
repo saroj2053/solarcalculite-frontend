@@ -1,19 +1,15 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 import { signout } from "../../api/userApi";
 import logo from "../../images/solarCalculiteLogo.png";
+import useAuthUserStore from "../../store/userStore";
 function Navbar() {
-  const [auth, setAuth] = useAuth();
+  const { authUser, setAuthUser } = useAuthUserStore();
 
   const handleSignOut = async () => {
     await signout();
-    setAuth({
-      ...auth,
-      user: null,
-      token: "",
-    });
+    setAuthUser(null);
     localStorage.removeItem("auth");
   };
 
@@ -23,7 +19,7 @@ function Navbar() {
         className={`navbar navbar-expand-lg navbar-light bg-light navbar__nav`}
       >
         <div className="container">
-          <NavLink className="navbar-brand" to="#">
+          <NavLink className="navbar-brand" to="/projects">
             <span className="navbar-brand__text">
               <img src={logo} alt="" />
             </span>
@@ -41,7 +37,7 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
-              {!auth.token ? (
+              {!authUser.token ? (
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/">
@@ -63,15 +59,14 @@ function Navbar() {
                   </li>
 
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="profile">
-                      Welcome,
+                    <NavLink className="nav-link" to="/profile">
                       <span
                         style={{
                           textDecoration: "underline",
                           paddingLeft: "5px",
                         }}
                       >
-                        {auth.user.name}
+                        My Profile
                       </span>
                     </NavLink>
                   </li>

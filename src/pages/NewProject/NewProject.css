@@ -8,10 +8,16 @@
   justify-content: center;
 }
 
-.newProjectWrapper > h1 {
+.newProject__heading {
   font-size: 3rem;
   font-weight: bold;
   padding: 20px 0;
+  color: var(--text-slate-700);
+  text-align: center;
+}
+
+.selection__text {
+  color: var(--text-slate-600);
 }
 
 .productSelectionWrapper {
@@ -26,7 +32,7 @@
 }
 
 .saving-text {
-  margin-left: 5px; 
+  margin-left: 5px;
 }
 
 .iconWrap {
@@ -35,9 +41,7 @@
 }
 
 .bsDbFill {
-
   vertical-align: middle;
-  
 }
 
 @media screen and (max-width: 640px) {
@@ -77,79 +81,79 @@
     font-size: 0.85rem;
   }
 }
-  
-  @media screen and (min-width: 641px) and (max-width: 1007px) {
-    .newProjectWrapper {
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  
-    .newProjectWrapper > h1 {
-      font-size: 2rem;
-      font-weight: bold;
-      padding: 20px 0;
-    }
-  
-    .selection__text {
-      font-size: 1.25rem;
-    }
-  
-    .newProject__label {
-      font-size: 1rem;
-    }
-  
-    .selectedPredefinedProduct {
-      font-size: 1rem;
-    }
-  
-    .productSelectionBtn {
-      font-size: 1rem;
-    }
-  
-    .selectProductList {
-      font-size: 1rem;
-    }
+
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  .newProjectWrapper {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  @media screen and (min-width: 1008px) {
-    .newProjectWrapper {
-      width: 70%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  
-    .newProjectWrapper > h1 {
-      font-size: 2.25rem;
-      font-weight: bold;
-      padding: 20px 0;
-    }
-  
-    .selection__text {
-      font-size: 1.25rem;
-    }
-  
-    .newProject__label {
-      font-size: 1rem;
-    }
-  
-    .selectedPredefinedProduct {
-      font-size: 1rem;
-    }
-  
-    .productSelectionBtn {
-      font-size: 1rem;
-    }
-  
-    .selectProductList {
-      font-size: 1rem;
-    }
+  .newProjectWrapper > h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20px 0;
   }
+
+  .selection__text {
+    font-size: 1.25rem;
+  }
+
+  .newProject__label {
+    font-size: 1rem;
+  }
+
+  .selectedPredefinedProduct {
+    font-size: 1rem;
+  }
+
+  .productSelectionBtn {
+    font-size: 1rem;
+  }
+
+  .selectProductList {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .newProjectWrapper {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .newProjectWrapper > h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    padding: 20px 0;
+  }
+
+  .selection__text {
+    font-size: 1.25rem;
+  }
+
+  .newProject__label {
+    font-size: 1rem;
+  }
+
+  .selectedPredefinedProduct {
+    font-size: 1rem;
+  }
+
+  .productSelectionBtn {
+    font-size: 1rem;
+  }
+
+  .selectProductList {
+    font-size: 1rem;
+  }
+}

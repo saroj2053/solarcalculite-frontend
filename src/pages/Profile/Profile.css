@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.profile__header {
+  color: var(--text-slate-700);
+}
+
 .profile__details {
   display: flex;
   flex-direction: column;
@@ -30,7 +34,6 @@
   display: flex;
   gap: 20px;
   align-items: center;
-
 }
 
 .textWrapper .icon,
@@ -79,7 +82,6 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-
   }
 
   .textWrapper .icon {
@@ -180,7 +182,6 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-
   }
 
   .textWrapper .icon {

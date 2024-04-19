@@ -11,7 +11,7 @@
   font-weight: bold;
   background: -webkit-linear-gradient(45deg, #d3d3d3, #fad6a3 30%);
   text-shadow: 4px 4px 0 #122316;
-  background-clip:none;
+  background-clip: none;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -19,14 +19,13 @@
 .errorSubTitle {
   font-size: 2rem;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
   font-family: inherit;
+  color: var(--text-slate-700);
 }
-
 
 .errorLink {
   color: #fff;
-  text-transform: uppercase;
   font-weight: 500;
 }
 
@@ -35,10 +34,14 @@
   text-decoration: none;
 }
 
+.errorDesc {
+  color: var(--text-slate-600);
+  font-size: 1rem;
+}
+
 /* #################### media queries ################# */
 
 @media screen and (max-width: 640px) {
-  
   .errorPage {
     height: 70vh;
     display: flex;
@@ -52,7 +55,7 @@
     font-weight: bold;
     background: -webkit-linear-gradient(45deg, #d3d3d3, #fad6a3 30%);
     text-shadow: 4px 4px 0 #122316;
-    background-clip:none;
+    background-clip: none;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -66,70 +69,35 @@
   .errorDesc {
     font-size: 0.85rem;
   }
+}
 
-
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  .errorPage {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  
+  .errorTitle {
+    font-size: 6rem;
+    font-weight: bold;
+    background: -webkit-linear-gradient(45deg, #d3d3d3, #fad6a3 30%);
+    text-shadow: 4px 4px 0 #122316;
+    background-clip: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-  @media screen and (min-width: 641px) and (max-width: 1007px) {
-    .errorPage {
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .errorTitle {
-      font-size: 6rem;
-      font-weight: bold;
-      background: -webkit-linear-gradient(45deg, #d3d3d3, #fad6a3 30%);
-      text-shadow: 4px 4px 0 #122316;
-      background-clip:none;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  
-    .errorSubTitle {
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-family: inherit;
-    }
-    .errorDesc {
-      font-size: 1rem;
-      text-align: center;
-    }
+  .errorSubTitle {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: inherit;
   }
-  
-  @media screen and (min-width: 1008px) {
-    .errorPage {
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .errorTitle {
-      font-size: 8rem;
-      font-weight: bold;
-      background: -webkit-linear-gradient(45deg, #d3d3d3, #fad6a3 30%);
-      text-shadow: 4px 4px 0 #122316;
-      background-clip:none;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  
-    .errorSubTitle {
-      font-size: 2rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-family: inherit;
-    }
-    .errorDesc {
-      font-size: 1.25rem;
-      text-align: center;
-    }
+  .errorDesc {
+    font-size: 1rem;
+    text-align: center;
   }
+}

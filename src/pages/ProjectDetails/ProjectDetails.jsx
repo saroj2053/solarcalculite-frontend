@@ -16,6 +16,7 @@ import EditProjectModal from "../../components/EditProjectModal/EditProjectModal
 import { TbTrashFilled } from "react-icons/tb";
 import { FaEdit } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa";
+import HomeLayout from "../../layout/HomeLayout/HomeLayout";
 
 function ProjectDetails() {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function ProjectDetails() {
     // eslint-disable-next-line
   }, []);
 
-  const activeProducts = products.filter(product => {
+  const activeProducts = products.filter((product) => {
     return product.isReadOnly === false;
   });
 
@@ -82,7 +83,7 @@ function ProjectDetails() {
   };
 
   return (
-    <>
+    <HomeLayout>
       {project.length === 0 ? (
         <Loader text="Project Details" />
       ) : (
@@ -241,7 +242,7 @@ function ProjectDetails() {
           project={project}
         />
       )}
-    </>
+    </HomeLayout>
   );
 }
 

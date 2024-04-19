@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { RiFileInfoFill } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa";
+import HomeLayout from "../../layout/HomeLayout/HomeLayout";
 
 function Projects() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function Projects() {
     fetchProjects();
   }, []);
 
-  const handleFilterChange = evt => {
+  const handleFilterChange = (evt) => {
     const { name, checked } = evt.target;
     if (name === "active") {
       setActiveFilter(checked);
@@ -36,7 +37,7 @@ function Projects() {
     }
   };
 
-  const filteredProjects = projects.filter(project => {
+  const filteredProjects = projects.filter((project) => {
     if (activeFilter && inactiveFilter) {
       return true;
     } else if (activeFilter) {
@@ -52,7 +53,7 @@ function Projects() {
   }
 
   return (
-    <>
+    <HomeLayout>
       {showLoader ? (
         <Loader text="Projects" />
       ) : (
@@ -91,7 +92,7 @@ function Projects() {
               </div>
               <div className="cta__addProject mt-4">
                 <button
-                  className="btn btn-primary btn-sm projectAddBtn"
+                  className="btn btn-primary btn-md projectAddBtn"
                   onClick={() => navigate("/new-project")}
                 >
                   <div className="buttonElements">
@@ -104,17 +105,19 @@ function Projects() {
               </div>
 
               <div className="projectsWrapper">
-                {filteredProjects.map(project => (
+                {filteredProjects.map((project) => (
                   <div key={project._id} className="projects">
                     <div className="project">
                       <div className="project__text">
-                        <h2>{project.title} </h2>
+                        <h2 style={{ color: "var(--text-slate-700)" }}>
+                          {project.title}{" "}
+                        </h2>
 
                         <p>{getFirstNCharacters(project?.description, 120)}</p>
 
                         <div className="project__moreInfo">
                           <button
-                            className="btn btn-primary btn-sm"
+                            className="btn btn-primary btn-md"
                             onClick={() => navigate(`/project/${project._id}`)}
                           >
                             <div className="button-content">
@@ -153,9 +156,9 @@ function Projects() {
                 alignItems: "center",
               }}
             >
-              <div>No projects found</div>
+              <h2>No projects found</h2>
               <button
-                className="btn btn-primary btn-sm"
+                className="btn btn-primary btn-md"
                 onClick={() => navigate("/new-project")}
               >
                 Add New Project
@@ -164,7 +167,7 @@ function Projects() {
           )}
         </>
       )}
-    </>
+    </HomeLayout>
   );
 }
 

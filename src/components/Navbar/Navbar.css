@@ -12,14 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
 
 .navbar-light .navbar-nav .nav-link.active {
   color: #e76f04;
 }
-
 
 .navbar__brand {
   display: flex;
@@ -29,7 +26,7 @@
 
 .navbar-brand .navbar-brand__text {
   font-size: 1.6rem;
-  font-weight: 600
+  font-weight: 600;
 }
 
 .nav-link {
@@ -45,9 +42,8 @@
   text-align: center;
 }
 
-
 .navbar-light .navbar-nav .hover__links:hover {
-  color: #222
+  color: #222;
 }
 
 .signUpButton {
@@ -71,27 +67,26 @@
 .signOutButton {
   border: none;
   outline: none;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 5px 20px !important;
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
   text-decoration: none;
-  background: #ea3943;
+  border: 1px solid var(--primary-color);
+  transition: background 0.4s ease-in-out;
 }
 
 .signOutButton:hover {
-  background-color: #e01822;
-  color: white !important;
+  background: var(--primary-color);
 }
-
 
 /* ############### media queries ################ */
 
-@media(max-width: 640px) {
+@media (max-width: 640px) {
   .navbar-brand .navbar-brand__text {
     font-size: 1.25rem;
-    font-weight: 600
+    font-weight: 600;
   }
 
   .nav-item {
@@ -123,13 +118,12 @@
     background-color: #e01822;
     color: white !important;
   }
-
 }
 
 @media screen and (min-width: 641px) and (max-width: 991px) {
   .navbar-brand .navbar-brand__text {
     font-size: 1.5rem;
-    font-weight: 600
+    font-weight: 600;
   }
 
   .nav-item {
@@ -163,4 +157,5 @@
   }
 }
 
-@media screen and (min-width: 992px) {}
+@media screen and (min-width: 992px) {
+}

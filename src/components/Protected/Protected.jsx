@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import useAuthUserStore from "../../store/userStore";
 
 function Protected({ children }) {
-  const [auth] = useAuth();
+  const { authUser, setAUthUser } = useAuthUserStore();
 
-  if (!auth.token) {
+  if (!authUser?.token) {
     return <Navigate to="/" />;
   } else {
     return children;

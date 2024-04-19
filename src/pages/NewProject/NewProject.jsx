@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getTemplates } from "../../api/templateApi";
 import { ToastContainer, toast } from "react-toastify";
 import { BsDatabaseFillAdd } from "react-icons/bs";
+import HomeLayout from "../../layout/HomeLayout/HomeLayout";
 
 function NewProject() {
   const navigate = useNavigate();
@@ -25,10 +26,10 @@ function NewProject() {
     fetchTemplates();
   }, []);
 
-  const handleFileChange = event => {
+  const handleFileChange = (event) => {
     setSelectedFiles(Array.from(event.target.files));
   };
-  const handleFileUpload = async evt => {
+  const handleFileUpload = async (evt) => {
     evt.preventDefault();
     if (!selectedFiles.length === 0) {
       return toast.error("Please include atleast one image");
@@ -64,9 +65,9 @@ function NewProject() {
   };
 
   return (
-    <>
+    <HomeLayout>
       <div className="newProjectWrapper">
-        <h1 className="text-center">Add Project</h1>
+        <h1 className="newProject__heading">Add Project</h1>
         <ToastContainer theme="dark" />
         <form encType="multipart/form-data">
           <div className="mb-3 ">
@@ -77,7 +78,7 @@ function NewProject() {
               className="form-control"
               type="text"
               value={title}
-              onChange={evt => setTitle(evt.target.value)}
+              onChange={(evt) => setTitle(evt.target.value)}
               id="title"
               name="title"
               required
@@ -97,7 +98,7 @@ function NewProject() {
               value={description}
               id="description"
               name="description"
-              onChange={evt => setDescription(evt.target.value)}
+              onChange={(evt) => setDescription(evt.target.value)}
               required
             ></textarea>
           </div>
@@ -140,19 +141,19 @@ function NewProject() {
                     You haven't selected any product
                   </span>
                 ) : (
-                  <>
+                  <div className="form-text text-muted">
                     You have selected:{" "}
                     <span
                       style={{
                         color: "white",
-                        backgroundColor: "green",
+                        backgroundColor: "var(--primary-color)",
                         borderRadius: "10px",
-                        padding: "2px 10px",
+                        padding: "4px 10px",
                       }}
                     >
                       {selectedTemplate.productName}
                     </span>
-                  </>
+                  </div>
                 )}
               </p>
             </div>
@@ -167,7 +168,7 @@ function NewProject() {
               </button>
 
               <div className="dropdown-menu">
-                {templates.map(template => (
+                {templates.map((template) => (
                   <div key={template._id}>
                     <li
                       className="dropdown-item selectProductList"
@@ -183,7 +184,7 @@ function NewProject() {
 
           <div className="mb-3">
             <button
-              className="btn btn-primary btn-sm"
+              className="btn btn-primary btn-md"
               onClick={handleFileUpload}
               disabled={isUploading}
             >
@@ -199,7 +200,7 @@ function NewProject() {
           </div>
         </form>
       </div>
-    </>
+    </HomeLayout>
   );
 }
 
