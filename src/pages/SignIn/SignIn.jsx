@@ -37,55 +37,61 @@ function SignIn() {
 
   return (
     <div className="signIn">
-      <div className="signInBgImage">
-        <img src={signInBgImage} alt="" />
-        <div className="slogan__contents">
-          <h2>Sign In to Power Up: Your Solar Journey Begins Here!</h2>
-        </div>
-      </div>
-      <div className="signInForm">
-        <div className="text-center mb-5">
-          <img src={solarCalculiteLogo} alt="" />
-        </div>
-        <form onSubmit={handleSignIn}>
-          <h2 className="signInHeader mb-5">Sign In</h2>
-          <div className="form-group">
-            <label htmlFor="email">Email address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              id="email"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
-              id="password"
-            />
-          </div>
+      <div className="signInWrapper">
+        <div className="signInBgImage">
+          <img src={signInBgImage} alt="" />
+          <div className="signInForm">
+            <div className="text-center">
 
-          <button
-            type="submit"
-            onClick={handleSignIn}
-            className="btn btn-primary btn-md"
-          >
-            Sign In
-          </button>
-          <div className="mt-3">
-            <span className="toSignUpPage">
-              Don't have an account? {"  "}
-              <button className="signUpBtn" onClick={() => navigate("/signup")}>
-                Sign Up
+            <img className="brandLogo" src={solarCalculiteLogo} alt="" />
+            </div>
+
+            <p className="signInSlogan">
+              <span style={{fontWeight: "bold", fontSize: "1.25rem"}}>Sign In</span> to Power Up: Your Solar Journey Begins Here!
+            </p>
+            <form onSubmit={handleSignIn}>
+              <div className="form-group">
+                <label htmlFor="email">Email address</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-control"
+                  id="email"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="form-control"
+                  id="password"
+                />
+              </div>
+
+              <button
+                type="submit"
+                onClick={handleSignIn}
+                className="btn btn-primary btn-sm"
+              >
+                Sign In
               </button>
-            </span>
+              <div className="mt-3">
+                <span className="toSignUpPage">
+                  Don't have an account? {"  "}
+                  <button
+                    className="signUpBtn"
+                    onClick={() => navigate("/signup")}
+                  >
+                    Sign Up
+                  </button>
+                </span>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
       <ToastContainer theme="dark" />
     </div>

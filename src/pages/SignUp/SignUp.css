@@ -1,19 +1,38 @@
-.signUp {
-  display: flex;
+.signUpPageBg {
+  width: 100%;
+  position: relative;
 }
 
-.signUpHeader {
-  font-size: 3rem;
-  color: var(--text-slate-700);
-  font-weight: bold;
+.signUpPageBg > img {
+  width: 100%;
+  height: 100%;
+}
+
+.signupSlogan {
   text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
 }
 
 .signUpForm {
-  display: block;
-  width: 50%;
-  padding: 3rem;
+  width: 40%;
   margin: 0 auto;
+  padding: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: white;
+  opacity: 0.85;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2)
+    );
+    backdrop-filter: blur(1rem);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
 .form-group > input {
@@ -28,51 +47,44 @@
   font-weight: bold;
   background: transparent;
   color: var(--primary-color);
+  text-transform: uppercase;
 }
 
 .signInBtn:hover {
   text-decoration: underline;
+  opacity: 0.8;
 }
 
 .cta__toSignInPage {
   font-weight: bold;
-  color: var(--text-slate-600);
+  color: #121212;
   font-size: 0.95rem;
 }
 
-.signUpPageBg {
-  width: 50%;
-  min-height: 100vh;
-  position: relative;
-}
 
-.signUpPageBg > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.signup__slogan {
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  transform: translate(-20%, -50%);
-  background: var(--primary-color);
-  opacity: 0.75;
-  padding: 2rem;
-  color: var(--text-slate-50);
-}
 /* ################### media queries ################### */
-@media screen and (max-width: 768px) {
-  .signUpPageBg {
-    display: none;
-  }
-  .signUpForm {
-    width: 90%;
-    margin: 0 auto;
-    padding: 3rem;
-  }
 
-  .signUpHeader {
-    font-size: 2rem;
+@media screen and (max-width: 1080px) {
+  .signUpForm {
+    width: 50%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .signUpForm {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 586px) {
+  .signUpForm {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .signUpForm {
+    width: 85%;
+  }
+}
+

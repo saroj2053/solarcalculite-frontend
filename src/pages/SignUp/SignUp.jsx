@@ -48,17 +48,15 @@ function SignUp() {
     <div className="signUp">
       <div className="signUpPageBg">
         <img src={signUpBgImage} alt="" />
-        <div className="signup__slogan">
-          <h2>Join Us to Ignite Solar Energy: Register and Shine!</h2>
-        </div>
-      </div>
-
+        
       <div className="signUpForm">
-        <div className="text-center mb-5">
+        <div className="text-center">
           <img src={solarCalculiteLogo} alt="" />
         </div>
+        <div className="signupSlogan">
+          <p>Join Us to Ignite Solar Energy: <span style={{fontSize: "1.25rem", fontWeight: "bold"}}>Register</span> and Shine!</p>
+        </div>
         <form>
-          <h2 className="signUpHeader">Sign Up</h2>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
@@ -113,7 +111,7 @@ function SignUp() {
           <button
             type="submit"
             onClick={handleRegister}
-            className="btn btn-primary btn-md"
+            className="btn btn-primary btn-sm"
           >
             Sign Up
           </button>
@@ -127,6 +125,8 @@ function SignUp() {
           </div>
         </form>
       </div>
+      </div>
+
       <ToastContainer theme="dark" />
     </div>
   );

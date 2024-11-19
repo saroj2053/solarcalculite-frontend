@@ -1,10 +1,5 @@
-.signIn {
-  display: flex;
-  align-items: center;
-}
-
 .signInBgImage {
-  width: 50%;
+  width: 100%;
   height: 100vh;
   position: relative;
 }
@@ -15,22 +10,43 @@
   object-fit: cover;
 }
 
-.slogan__contents {
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  transform: translate(-20%, -50%);
-  background: var(--primary-color);
-  opacity: 0.75;
-  padding: 2rem;
-  color: var(--text-slate-50);
+.signInSlogan {
+  text-align: center;
+  font-size: 0.875rem;  
+  line-height: 1.75rem;
 }
 
+
 .signInForm {
-  width: 50%;
+  width: 45%;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: white;
+  opacity: 0.85;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2)
+    );
+    backdrop-filter: blur(1rem);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  
 }
+
+
+.brandLogo {
+  width: 150px;
+  height: 75px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
 
 .signInHeader {
   font-size: 3rem;
@@ -40,41 +56,58 @@
 }
 
 label {
-  color: var(--text-slate-500);
+  color: #121212;
+  
 }
 
 .form-group > input {
   padding: 15px 10px;
-  border: 2px solid var(--text-slate-300);
+  border: 2px solid #ccc;
   border-radius: 5px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
+
 .toSignUpPage {
-  font-weight: bold;
-  color: var(--text-slate-600);
-  font-size: 0.95rem;
+  font-weight: 600;
+  color: #121212;
+  font-size: 0.875rem;
 }
 .signUpBtn {
   border: none;
   outline: none;
   font-weight: bold;
   background: transparent;
+  text-transform: uppercase;
   color: var(--primary-color);
 }
 
 .signUpBtn:hover {
   text-decoration: underline;
+  opacity: 0.8;
 }
 
 /* ################### media queries ################### */
 
-@media screen and (max-width: 768px) {
-  .signInBgImage {
-    display: none;
-  }
+@media screen and (max-width: 1080px) {
   .signInForm {
-    width: 90%;
-    margin: 0 auto;
-    padding: 3rem;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .signInForm {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 586px) {
+  .signInForm {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .signInForm {
+    width: 85%;
   }
 }
